@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* Paryavaran Sanrakshan — brand tokens
+   Handloom / natural-dye inspired palette.
+   Paired with hand-drawn Warli / Madhubani / Kolam illustrations. */
+:root {
+  --cream: #faf3e3;
+  --ink: #1a1a1a;
+  --vana: #3e6b4a;
+  --vana-dark: #2f5239;
+  --indigo: #2e4057;
+  --haldi: #e8b923;
+  --haldi-dark: #c69a10;
+  --terracotta: #b8442f;
+  --muted: #8c7b63;
+
+  --background: var(--cream);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-vana: var(--vana);
+  --color-vana-dark: var(--vana-dark);
+  --color-indigo: var(--indigo);
+  --color-haldi: var(--haldi);
+  --color-haldi-dark: var(--haldi-dark);
+  --color-terracotta: var(--terracotta);
+  --color-muted: var(--muted);
+
+  --font-sans: var(--font-plex-sans);
+  --font-display: var(--font-yatra);
+  --font-devanagari: var(--font-tiro-devanagari);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), var(--font-sans), serif;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.font-devanagari {
+  font-family: var(--font-devanagari), serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
