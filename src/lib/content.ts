@@ -188,25 +188,68 @@ export const karyavibhag: Entry[] = [
 
 /* ── Events ────────────────────────────────────────────────────────── */
 
-export const events: Entry[] = [
-  { slug: "world-earth-day-poster", title: "World Earth Day Poster (2020)", summary: "Nationwide poster campaign marking Earth Day." },
-  { slug: "prakruti-vandana", title: "Prakruti Vandana (2020)", summary: "A pan-India ceremony honouring nature." },
-  { slug: "media-samvad-conclave", title: "Media Samvad Conclave (2020)", summary: "Conversations with media on environmental coverage." },
-  { slug: "vice-chancellors-conclave", title: "Vice Chancellors' Conclave (2020)", summary: "University leaders aligning on campus sustainability." },
-  { slug: "paryavaran-prahari", title: "Paryavaran Prahari (2020)", summary: "Recognising environmental sentinels across the country." },
-  { slug: "paryavaran-pratiyogita", title: "Paryavaran Pratiyogita (2021)", summary: "Youth competitions on environmental themes." },
-  { slug: "jal-samwad", title: "Jal Samwad (2021)", summary: "A national dialogue on water conservation." },
-  { slug: "online-conclave", title: "Online Conclave (2021)", summary: "Virtual conclave during pandemic times." },
-  { slug: "eco-bricks", title: "Eco Bricks (2021)", summary: "Converting single-use plastic into reusable construction bricks." },
-  { slug: "plastic-mukt-bharat", title: "Plastic Mukt Bharat (2021)", summary: "Pushing for a plastic-free India." },
-  { slug: "haridwar-kumbh", title: "Haridwar Kumbh (2021)", summary: "Environmental outreach at Kumbh Mela." },
+export type EventEntry = Entry & {
+  date: string;
+  year: number;
+};
+
+export const events: EventEntry[] = [
+  { slug: "world-earth-day-poster", title: "World Earth Day Poster", date: "22 April 2020", year: 2020, summary: "Nationwide poster campaign marking Earth Day.", intro: "On World Earth Day 2020, Paryavaran Sanrakshan launched a nationwide digital poster campaign encouraging citizens to pledge their commitment to the environment — reaching thousands across social media during the lockdown." },
+  { slug: "prakruti-vandana", title: "Prakruti Vandana", date: "30 August 2020", year: 2020, summary: "A pan-India ceremony honouring nature.", intro: "Prakruti Vandana (Nature Worship) was a synchronised ceremony held across India where volunteers performed puja for trees, rivers and soil — reinforcing the cultural reverence for nature in Indian tradition." },
+  { slug: "media-samvad-conclave", title: "Media Samvad Conclave", date: "9 December 2020", year: 2020, summary: "Conversations with media on environmental coverage.", intro: "A conclave bringing together journalists, editors and environmental activists to discuss how Indian media can better cover environmental issues and inspire public action." },
+  { slug: "vice-chancellors-conclave", title: "Vice Chancellors' Conclave", date: "2020", year: 2020, summary: "University leaders aligning on campus sustainability.", intro: "Vice Chancellors from universities across India convened to align on campus-level sustainability — from green audits and plantation drives to integrating environmental education into curricula." },
+  { slug: "paryavaran-prahari", title: "Paryavaran Prahari", date: "2020", year: 2020, summary: "Recognising environmental sentinels across the country.", intro: "The Paryavaran Prahari (Environmental Sentinel) programme identified and recognised individuals who have made outstanding contributions to environmental protection in their communities." },
+  { slug: "paryavaran-pratiyogita", title: "Paryavaran Pratiyogita", date: "2021", year: 2021, summary: "Youth competitions on environmental themes.", intro: "An all-India competition engaging students in essay writing, poster design, and quiz events on environmental themes — nurturing the next generation of environmental leaders." },
+  { slug: "jal-samwad", title: "Jal Samwad", date: "17 July 2021", year: 2021, summary: "A national dialogue on water conservation.", intro: "Jal Samwad (Water Dialogue) was a national-level conversation bringing together water experts, policy-makers and grassroots workers to discuss strategies for water conservation and management across India." },
+  { slug: "online-conclave", title: "Online Conclave", date: "2021", year: 2021, summary: "Virtual conclave during pandemic times.", intro: "A virtual conclave held during the pandemic, connecting environmental volunteers from across the country to share learnings, coordinate programmes, and plan post-pandemic green recovery initiatives." },
+  { slug: "eco-bricks", title: "Eco Bricks", date: "2021", year: 2021, summary: "Converting single-use plastic into reusable construction bricks.", intro: "The Eco Bricks campaign taught communities to stuff non-recyclable plastic waste into PET bottles, creating dense building blocks that can be used for construction — turning waste into a resource." },
+  { slug: "plastic-mukt-bharat", title: "Plastic Mukt Bharat", date: "2021", year: 2021, summary: "Pushing for a plastic-free India.", intro: "Plastic Mukt Bharat (Plastic-Free India) was a mass awareness campaign calling for the elimination of single-use plastics, with local drives collecting and responsibly disposing of plastic waste across cities and towns." },
+  { slug: "haridwar-kumbh", title: "Haridwar Kumbh", date: "2021", year: 2021, summary: "Environmental outreach at Kumbh Mela.", intro: "At the 2021 Haridwar Kumbh Mela, Paryavaran Sanrakshan volunteers ran environmental awareness camps, distributed cloth bags, and conducted plogging drives along the Ganga — ensuring one of the world's largest gatherings left the smallest possible ecological footprint." },
 ];
 
 /* ── Stories ────────────────────────────────────────────────────────── */
 
-export const stories: Entry[] = [
-  { slug: "godavari-bioremediation", title: "Bio-remediation of Godavari River", summary: "Restoring river ecology through bio-enzyme application in Nanded." },
-  { slug: "prayagraj-tree-worship", title: "Prayagraj Tree Worship", summary: "Volunteers worshipped amla trees and pledged environmental protection." },
-  { slug: "gurugram-zero-waste-kirtan", title: "Gurugram Zero-Waste Nagar Kirtan", summary: "A plastic-free religious procession with plogging activity." },
-  { slug: "sirsa-sapling-distribution", title: "Sirsa Sapling Distribution", summary: "A doctor distributed 86 flower varieties in Sirsa, Haryana." },
+export type StoryEntry = Entry & {
+  type: "impact" | "dispatch" | "photo-essay";
+  location?: string;
+  topics?: string[];
+};
+
+export const stories: StoryEntry[] = [
+  {
+    slug: "godavari-bioremediation",
+    title: "Bio-remediation of Godavari River",
+    summary: "Restoring river ecology through bio-enzyme application in Nanded.",
+    type: "impact",
+    location: "Nanded, Maharashtra",
+    topics: ["water"],
+    intro: "In a landmark initiative, Paryavaran Sanrakshan volunteers collaborated with local authorities to apply bio-enzymes to a stretch of the Godavari River in Nanded, Maharashtra. The treatment targeted organic pollutants and significantly improved water quality within weeks, demonstrating that community-led bio-remediation can revive even severely polluted river stretches.",
+  },
+  {
+    slug: "prayagraj-tree-worship",
+    title: "Prayagraj Tree Worship",
+    summary: "Volunteers worshipped amla trees and pledged environmental protection.",
+    type: "dispatch",
+    location: "Prayagraj, Uttar Pradesh",
+    topics: ["plantation"],
+    intro: "In the Prayagraj division, volunteers from Paryavaran Sanrakshan gathered to worship amla (Indian gooseberry) trees — reaffirming the traditional bond between communities and the natural world. Participants pledged to protect trees in their neighbourhoods and plant new saplings in the coming season.",
+  },
+  {
+    slug: "gurugram-zero-waste-kirtan",
+    title: "Gurugram Zero-Waste Nagar Kirtan",
+    summary: "A plastic-free religious procession with plogging activity.",
+    type: "dispatch",
+    location: "Gurugram, Haryana",
+    topics: ["polythene-free"],
+    intro: "Setting a new benchmark for eco-friendly religious events, the Gurugram chapter organised a zero-waste Nagar Kirtan Yatra. Volunteers distributed cloth bags to devotees, replaced plastic plates with biodegradable alternatives, and ran a plogging drive along the procession route — collecting and segregating waste as they walked.",
+  },
+  {
+    slug: "sirsa-sapling-distribution",
+    title: "Sirsa Sapling Distribution",
+    summary: "A doctor distributed 86 flower varieties in Sirsa, Haryana.",
+    type: "dispatch",
+    location: "Sirsa, Haryana",
+    topics: ["plantation"],
+    intro: "Dr. Rajesh, a local physician and Paryavaran Sanrakshan volunteer in Sirsa district, distributed free flower saplings of 86 different varieties to residents. The drive turned homes and public spaces into blooming gardens, proving that environmental action and beauty go hand in hand.",
+  },
 ];

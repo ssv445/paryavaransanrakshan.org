@@ -8,6 +8,8 @@ export const metadata: Metadata = {
 };
 
 export default function EventsIndex() {
+  const years = [...new Set(events.map((e) => e.year))].sort((a, b) => b - a);
+
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 lg:px-8 lg:py-24">
       <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">Events</p>
@@ -15,22 +17,28 @@ export default function EventsIndex() {
       <p className="mt-4 max-w-2xl text-lg text-ink/75">
         Moments from the movement — conclaves, drives, and dialogues across India.
       </p>
-      <ul className="mt-12 divide-y divide-ink/10 border-y border-ink/10">
-        {events.map((e) => (
-          <li key={e.slug}>
-            <Link
-              href={`/events/${e.slug}`}
-              className="flex flex-col gap-1 py-5 transition-colors hover:bg-white/60 sm:flex-row sm:items-center sm:justify-between"
-            >
-              <div>
-                <h2 className="text-lg text-ink">{e.title}</h2>
-                <p className="text-sm text-ink/70">{e.summary}</p>
-              </div>
-              <span className="shrink-0 text-sm font-semibold text-vana">Read →</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+
+      {years.map((year) => (
+        <div key={year} className="mt-12">
+          <h2 className="mb-4 text-2xl text-indigo">{year}</h2>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {events
+              .filter((e) => e.year === year)
+              .map((e) => (
+                <Link
+                  key={e.slug}
+                  href={`/events/${e.slug}`}
+                  className="group rounded-2xl border border-ink/10 bg-white/60 p-5 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
+                >
+                  <p className="mb-1 text-xs font-medium text-muted">{e.date}</p>
+                  <h3 className="text-lg text-ink">{e.title}</h3>
+                  <p className="mt-1 text-sm text-ink/70">{e.summary}</p>
+                  <p className="mt-3 text-sm font-semibold text-vana group-hover:text-vana-dark">Read →</p>
+                </Link>
+              ))}
+          </div>
+        </div>
+      ))}
     </section>
   );
 }

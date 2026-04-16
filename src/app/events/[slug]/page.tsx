@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import PagePlaceholder from "@/components/PagePlaceholder";
+import { Calendar } from "lucide-react";
 import { events } from "@/lib/content";
 
 type Params = { slug: string };
@@ -22,5 +23,31 @@ export default async function EventDetail({ params }: { params: Promise<Params> 
   const { slug } = await params;
   const entry = events.find((e) => e.slug === slug);
   if (!entry) notFound();
-  return <PagePlaceholder title={entry.title} description={entry.summary} />;
+
+  return (
+    <article className="mx-auto max-w-3xl px-4 py-16 lg:px-8 lg:py-24">
+      <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">
+        <Link href="/events" className="hover:underline">Events</Link> / {entry.year}
+      </p>
+
+      <h1 className="text-4xl md:text-5xl">{entry.title}</h1>
+
+      <div className="mt-4 flex items-center gap-2 text-sm text-muted">
+        <Calendar className="h-4 w-4" aria-hidden />
+        {entry.date}
+      </div>
+
+      <div className="mt-8 space-y-6 text-lg leading-relaxed text-ink/85">
+        {entry.intro && <p>{entry.intro}</p>}
+
+        <p className="text-ink/70">{entry.summary}</p>
+      </div>
+
+      <p className="mt-10 text-sm">
+        <Link href="/events" className="text-vana underline underline-offset-4 hover:text-vana-dark">
+          ← All events
+        </Link>
+      </p>
+    </article>
+  );
 }
