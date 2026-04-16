@@ -30,7 +30,10 @@ export default async function EventDetail({ params }: { params: Promise<Params> 
         <Link href="/events" className="hover:underline">Events</Link> / {entry.year}
       </p>
 
-      <h1 className="text-4xl md:text-5xl">{entry.title}</h1>
+      <h1 className="notranslate text-4xl md:text-5xl">{entry.title}</h1>
+      {entry.titleHi && (
+        <p className="mt-2 font-devanagari text-xl text-vana">{entry.titleHi}</p>
+      )}
 
       <div className="mt-4 flex items-center gap-2 text-sm text-muted">
         <Calendar className="h-4 w-4" aria-hidden />
