@@ -13,8 +13,8 @@ import {
   WarliHouse,
   WarliTemple,
   WarliWoman,
-  WarliHandshake,
   WarliSchool,
+  WarliCommunity,
 } from "@/components/illustrations";
 
 const programs = [
@@ -27,7 +27,7 @@ const programs = [
 const karyavibhag = [
   { slug: "religious-institutes", title: "Religious Institutes", summary: "Partnering with temples, ashrams and faith communities.", Icon: WarliTemple },
   { slug: "nari-shakti", title: "Nari Shakti", summary: "Women-led environmental leadership and action.", Icon: WarliWoman },
-  { slug: "ngo-coordination", title: "NGO Coordination", summary: "Uniting NGOs for a shared environmental mission.", Icon: WarliHandshake },
+  { slug: "samajik-sansthan", title: "Samajik Sansthan", summary: "Engaging social organisations and NGOs for collective environmental action.", Icon: WarliCommunity },
   { slug: "educational-institutes", title: "Educational Institutes", summary: "Environment in every classroom and campus.", Icon: WarliSchool },
 ];
 

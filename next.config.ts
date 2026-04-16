@@ -32,8 +32,10 @@ const legacyRedirects: { source: string; destination: string; permanent: true }[
   { source: "/2024/02/23/religious-institutes-karyavibhag/", destination: "/karyavibhag/religious-institutes", permanent: true },
   { source: "/2024/02/23/nari-shakti-karya-vibhag", destination: "/karyavibhag/nari-shakti", permanent: true },
   { source: "/2024/02/23/nari-shakti-karya-vibhag/", destination: "/karyavibhag/nari-shakti", permanent: true },
-  { source: "/2024/02/23/ngo-karya-vibhag", destination: "/karyavibhag/ngo-coordination", permanent: true },
-  { source: "/2024/02/23/ngo-karya-vibhag/", destination: "/karyavibhag/ngo-coordination", permanent: true },
+  { source: "/2024/02/23/ngo-karya-vibhag", destination: "/karyavibhag/samajik-sansthan", permanent: true },
+  { source: "/2024/02/23/ngo-karya-vibhag/", destination: "/karyavibhag/samajik-sansthan", permanent: true },
+  { source: "/karyavibhag/ngo-coordination", destination: "/karyavibhag/samajik-sansthan", permanent: true },
+  { source: "/karyavibhag/ngo-coordination/", destination: "/karyavibhag/samajik-sansthan", permanent: true },
   { source: "/2024/02/23/educational-institutes-karyavibhag", destination: "/karyavibhag/educational-institutes", permanent: true },
   { source: "/2024/02/23/educational-institutes-karyavibhag/", destination: "/karyavibhag/educational-institutes", permanent: true },
 

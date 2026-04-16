@@ -5,7 +5,6 @@ import { karyavibhag } from "@/lib/content";
 import {
   WarliTemple,
   WarliWoman,
-  WarliHandshake,
   WarliSchool,
   WarliCommunity,
   WarliMegaphone,
@@ -21,9 +20,8 @@ export const metadata: Metadata = {
 const iconMap: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
   "religious-institutes": WarliTemple,
   "nari-shakti": WarliWoman,
-  "ngo-coordination": WarliHandshake,
-  "educational-institutes": WarliSchool,
   "samajik-sansthan": WarliCommunity,
+  "educational-institutes": WarliSchool,
   "jan-sampark": WarliMegaphone,
   "jan-samwad": WarliDialogue,
   "yuvashakti": WarliYouth,

@@ -155,20 +155,22 @@ export const karyavibhag: Entry[] = [
     ],
   },
   {
-    slug: "ngo-coordination",
-    title: "NGO Karya Vibhag",
-    titleHi: "स्वयंसेवी संस्था कार्यविभाग",
-    summary: "Uniting NGOs, innovators and researchers for a shared environmental mission.",
+    slug: "samajik-sansthan",
+    title: "Samajik Sansthan Karya Vibhag",
+    titleHi: "सामाजिक संस्थान कार्यविभाग",
+    summary: "Engaging social organisations, NGOs, and innovators for collective environmental action.",
     tagline: "Be someone's reason to smile.",
     intro:
-      "There is nothing more beautiful than someone who goes out of their way to make life beautiful for others. Not all of us can do great things but we can do small things with great love. The Innovators and Voluntary Organisation Karya Vibhag was formed to collaborate with such changemakers.",
+      "There is nothing more beautiful than someone who goes out of their way to make life beautiful for others. Not all of us can do great things but we can do small things with great love. The Samajik Sansthan Karya Vibhag (formerly NGO Coordination) works with social organisations, NGOs, innovators, and civic bodies to embed environmental consciousness into the fabric of Indian social life.",
     objectives: [
-      "Encourage environmental activities through innovators, voluntary organisations and NGOs.",
+      "Encourage environmental activities through social organisations, NGOs and innovators.",
       "Connect each innovator and VOs to form a chain and create an open network for all.",
+      "Partner with community groups to promote environmental awareness.",
     ],
     focusAreas: [
-      "Innovators (अन्वेषक)",
+      "Social organisations (सामाजिक संगठन)",
       "Voluntary organisations (स्वयंसेवी संस्था)",
+      "Innovators (अन्वेषक)",
       "Researchers (शोधकर्ता)",
     ],
   },
@@ -190,26 +192,6 @@ export const karyavibhag: Entry[] = [
       "Colleges and universities",
       "Campus green audits",
       "Student volunteer programmes",
-    ],
-  },
-  {
-    slug: "samajik-sansthan",
-    title: "Samajik Sansthan Karya Vibhag",
-    titleHi: "सामाजिक संस्थान कार्यविभाग",
-    summary: "Engaging social organisations for collective environmental action.",
-    tagline: "Together we can make a difference.",
-    intro:
-      "The Samajik Sansthan Karyavibhag works with social organisations, community groups, and civic bodies to embed environmental consciousness into the fabric of Indian social life. By partnering with organisations that already have deep community reach, PSG amplifies its environmental message across diverse populations.",
-    objectives: [
-      "Partner with social organisations to promote environmental awareness.",
-      "Integrate environmental action into community events and social gatherings.",
-      "Build a network of socially-engaged environmental advocates.",
-    ],
-    focusAreas: [
-      "Social organisations (सामाजिक संगठन)",
-      "Community groups",
-      "Civic bodies",
-      "Cultural organisations",
     ],
   },
   {
