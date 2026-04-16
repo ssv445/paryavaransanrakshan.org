@@ -7,12 +7,13 @@ import { ExternalLink, Menu, X } from "lucide-react";
 import clsx from "clsx";
 import { primaryNav, JOIN_URL } from "@/lib/nav";
 import GTranslate from "./GTranslate";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-ink/10 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 lg:px-8">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-3" aria-label="Paryavaran Sanrakshan — Home">
@@ -46,6 +47,7 @@ export default function Header() {
           <div className="text-sm">
             <GTranslate />
           </div>
+          <ThemeToggle />
           <a
             href={JOIN_URL}
             target="_blank"
@@ -88,6 +90,7 @@ export default function Header() {
           ))}
           <div className="mt-2 flex items-center justify-between gap-3 border-t border-ink/10 pt-3">
             <GTranslate />
+            <ThemeToggle />
             <a
               href={JOIN_URL}
               target="_blank"

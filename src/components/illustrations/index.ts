@@ -9,3 +9,4 @@ export { default as WarliHandshake } from "./WarliHandshake";
 export { default as WarliSchool } from "./WarliSchool";
 export { default as KolamCorner } from "./KolamCorner";
 export { default as MadhubaniHero } from "./MadhubaniHero";
+export { default as AnimatedMadhubaniHero } from "./AnimatedMadhubaniHero";

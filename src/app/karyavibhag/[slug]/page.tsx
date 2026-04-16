@@ -5,6 +5,12 @@ import { karyavibhag } from "@/lib/content";
 
 type Params = { slug: string };
 
+const heroImages: Record<string, string> = {
+  "religious-institutes": "/images/karyavibhag/religious-institutes.jpg",
+  "nari-shakti": "/images/karyavibhag/nari-shakti.jpg",
+  "educational-institutes": "/images/karyavibhag/educational-institutes.png",
+};
+
 export function generateStaticParams(): Params[] {
   return karyavibhag.map((k) => ({ slug: k.slug }));
 }
@@ -28,6 +34,7 @@ export default async function KaryavibhagDetail({ params }: { params: Promise<Pa
       backHref="/karyavibhag"
       backLabel="Karyavibhag"
       breadcrumb={entry.title}
+      heroImage={heroImages[slug]}
     />
   );
 }

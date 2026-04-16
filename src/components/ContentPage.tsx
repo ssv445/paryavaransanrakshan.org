@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { Entry } from "@/lib/content";
 
@@ -6,13 +7,14 @@ type Props = {
   backHref: string;
   backLabel: string;
   breadcrumb: string;
+  heroImage?: string;
 };
 
 /**
  * Full-page renderer for Programs and Karyavibhag entries.
  * Renders tagline, intro, objectives, and focus areas from the content registry.
  */
-export default function ContentPage({ entry, backHref, backLabel, breadcrumb }: Props) {
+export default function ContentPage({ entry, backHref, backLabel, breadcrumb, heroImage }: Props) {
   return (
     <article className="mx-auto max-w-3xl px-4 py-16 lg:px-8 lg:py-24">
       <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">
@@ -22,6 +24,18 @@ export default function ContentPage({ entry, backHref, backLabel, breadcrumb }: 
       <h1 className="text-4xl md:text-5xl">{entry.title}</h1>
       {entry.titleHi && (
         <p className="mt-2 font-devanagari text-xl text-vana">{entry.titleHi}</p>
+      )}
+
+      {heroImage && (
+        <div className="mt-8 overflow-hidden rounded-2xl">
+          <Image
+            src={heroImage}
+            alt={entry.title}
+            width={800}
+            height={500}
+            className="h-auto w-full object-cover"
+          />
+        </div>
       )}
 
       {entry.tagline && (

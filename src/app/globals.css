@@ -18,6 +18,22 @@
   --foreground: var(--ink);
 }
 
+/* Evening-lamp dark mode */
+.dark {
+  --cream: #1a1820;
+  --ink: #ede6d6;
+  --vana: #5fa472;
+  --vana-dark: #7fc091;
+  --indigo: #8ea8c3;
+  --haldi: #e8b923;
+  --haldi-dark: #f0cb4e;
+  --terracotta: #d9715d;
+  --muted: #a89b85;
+
+  --background: #121015;
+  --foreground: #ede6d6;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

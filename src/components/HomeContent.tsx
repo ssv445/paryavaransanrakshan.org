@@ -6,7 +6,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { JOIN_URL } from "@/lib/nav";
 import { FadeIn, StaggerChildren, staggerItem } from "@/components/motion";
 import {
-  MadhubaniHero,
+  AnimatedMadhubaniHero,
   WarliTree,
   WarliNoPlastic,
   WarliWater,
@@ -71,9 +71,7 @@ export default function HomeContent() {
           </FadeIn>
 
           <FadeIn direction="right" delay={0.2} duration={0.8}>
-            <div className="mx-auto w-full max-w-md lg:max-w-none">
-              <MadhubaniHero className="h-auto w-full" />
-            </div>
+            <AnimatedMadhubaniHero className="mx-auto w-full max-w-md lg:max-w-none" />
           </FadeIn>
         </div>
       </section>
