@@ -1,19 +1,30 @@
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import { JOIN_URL } from "@/lib/nav";
+import {
+  MadhubaniHero,
+  WarliTree,
+  WarliNoPlastic,
+  WarliWater,
+  WarliHouse,
+  WarliTemple,
+  WarliWoman,
+  WarliHandshake,
+  WarliSchool,
+} from "@/components/illustrations";
 
 const programs = [
-  { slug: "plantation", title: "Plantation", blurb: "Community-led tree planting across urban and rural India." },
-  { slug: "polythene-free", title: "Polythene Free", blurb: "Ending single-use plastic through awareness and alternatives." },
-  { slug: "save-water", title: "Save Water", blurb: "Rainwater harvesting, bio-remediation, and river revival." },
-  { slug: "harit-ghar", title: "Harit Ghar", blurb: "Turning homes into small, green, self-sustaining ecosystems." },
+  { slug: "plantation", title: "Plantation", blurb: "Community-led tree planting across urban and rural India.", Icon: WarliTree },
+  { slug: "polythene-free", title: "Polythene Free", blurb: "Ending single-use plastic through awareness and alternatives.", Icon: WarliNoPlastic },
+  { slug: "save-water", title: "Save Water", blurb: "Rainwater harvesting, bio-remediation, and river revival.", Icon: WarliWater },
+  { slug: "harit-ghar", title: "Harit Ghar", blurb: "Turning homes into small, green, self-sustaining ecosystems.", Icon: WarliHouse },
 ];
 
 const karyavibhag = [
-  { slug: "religious-institutes", title: "Religious Institutes" },
-  { slug: "nari-shakti", title: "Nari Shakti" },
-  { slug: "ngo-coordination", title: "NGO Coordination" },
-  { slug: "educational-institutes", title: "Educational Institutes" },
+  { slug: "religious-institutes", title: "Religious Institutes", summary: "Partnering with temples, ashrams and faith communities.", Icon: WarliTemple },
+  { slug: "nari-shakti", title: "Nari Shakti", summary: "Women-led environmental leadership and action.", Icon: WarliWoman },
+  { slug: "ngo-coordination", title: "NGO Coordination", summary: "Uniting NGOs for a shared environmental mission.", Icon: WarliHandshake },
+  { slug: "educational-institutes", title: "Educational Institutes", summary: "Environment in every classroom and campus.", Icon: WarliSchool },
 ];
 
 export default function Home() {
@@ -21,7 +32,7 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 lg:grid-cols-2 lg:items-center lg:px-8 lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-8 lg:py-24">
           <div>
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-terracotta">
               An all-India movement
@@ -55,8 +66,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Placeholder hero illustration area — Madhubani panel ships in Phase 2 */}
-          <div className="aspect-square rounded-3xl border border-ink/10 bg-gradient-to-br from-vana/10 via-haldi/10 to-terracotta/10" aria-hidden />
+          {/* Madhubani "Tree of Life" hero illustration */}
+          <div className="mx-auto w-full max-w-md lg:max-w-none">
+            <MadhubaniHero className="h-auto w-full" />
+          </div>
         </div>
       </section>
 
@@ -78,7 +91,9 @@ export default function Home() {
               href={`/programs/${p.slug}`}
               className="group rounded-2xl border border-ink/10 bg-white/60 p-6 transition-all hover:-translate-y-1 hover:border-vana/40 hover:shadow-lg"
             >
-              <div className="mb-4 aspect-square w-16 rounded-xl bg-vana/10" aria-hidden />
+              <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-vana/10 text-vana transition-colors group-hover:bg-vana/20">
+                <p.Icon className="h-10 w-10" />
+              </div>
               <h3 className="text-xl text-ink">{p.title}</h3>
               <p className="mt-2 text-sm text-ink/70">{p.blurb}</p>
               <p className="mt-4 text-sm font-semibold text-vana group-hover:text-vana-dark">
@@ -105,9 +120,13 @@ export default function Home() {
             <Link
               key={k.slug}
               href={`/karyavibhag/${k.slug}`}
-              className="rounded-2xl border border-ink/10 bg-indigo/5 p-6 hover:border-indigo/30 hover:bg-indigo/10"
+              className="group rounded-2xl border border-ink/10 bg-indigo/5 p-6 transition-all hover:-translate-y-0.5 hover:border-indigo/30 hover:bg-indigo/10"
             >
+              <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-xl bg-indigo/10 text-indigo transition-colors group-hover:bg-indigo/20">
+                <k.Icon className="h-9 w-9" />
+              </div>
               <h3 className="text-lg text-indigo">{k.title}</h3>
+              <p className="mt-1 text-sm text-ink/70">{k.summary}</p>
             </Link>
           ))}
         </div>

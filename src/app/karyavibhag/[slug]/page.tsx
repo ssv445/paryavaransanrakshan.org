@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import PagePlaceholder from "@/components/PagePlaceholder";
+import ContentPage from "@/components/ContentPage";
 import { karyavibhag } from "@/lib/content";
 
 type Params = { slug: string };
@@ -22,5 +22,12 @@ export default async function KaryavibhagDetail({ params }: { params: Promise<Pa
   const { slug } = await params;
   const entry = karyavibhag.find((k) => k.slug === slug);
   if (!entry) notFound();
-  return <PagePlaceholder title={entry.title} description={entry.summary} />;
+  return (
+    <ContentPage
+      entry={entry}
+      backHref="/karyavibhag"
+      backLabel="Karyavibhag"
+      breadcrumb={entry.title}
+    />
+  );
 }

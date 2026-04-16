@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import PagePlaceholder from "@/components/PagePlaceholder";
+import ContentPage from "@/components/ContentPage";
 import { programs } from "@/lib/content";
 
 type Params = { slug: string };
@@ -13,14 +13,21 @@ export async function generateMetadata(
   { params }: { params: Promise<Params> }
 ): Promise<Metadata> {
   const { slug } = await params;
-  const program = programs.find((p) => p.slug === slug);
-  if (!program) return {};
-  return { title: program.title, description: program.summary };
+  const entry = programs.find((p) => p.slug === slug);
+  if (!entry) return {};
+  return { title: entry.title, description: entry.summary };
 }
 
 export default async function ProgramPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
-  const program = programs.find((p) => p.slug === slug);
-  if (!program) notFound();
-  return <PagePlaceholder title={program.title} description={program.summary} />;
+  const entry = programs.find((p) => p.slug === slug);
+  if (!entry) notFound();
+  return (
+    <ContentPage
+      entry={entry}
+      backHref="/programs"
+      backLabel="Programs"
+      breadcrumb={entry.title}
+    />
+  );
 }
