@@ -19,7 +19,7 @@ import {
 
 const programs = [
   { slug: "plantation", title: "Plantation", blurb: "Community-led tree planting across urban and rural India.", Icon: WarliTree },
-  { slug: "polythene-free", title: "Polythene Free", blurb: "Ending single-use plastic through awareness and alternatives.", Icon: WarliNoPlastic },
+  { slug: "polythene-free", title: "Polythene Free", blurb: "Ending single-use plastic through awareness, eco-bricks, and alternatives.", Icon: WarliNoPlastic },
   { slug: "save-water", title: "Save Water", blurb: "Rainwater harvesting, bio-remediation, and river revival.", Icon: WarliWater },
   { slug: "harit-ghar", title: "Harit Ghar", blurb: "Turning homes into small, green, self-sustaining ecosystems.", Icon: WarliHouse },
 ];
@@ -116,7 +116,7 @@ export default function HomeContent() {
           <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
               <h2 className="text-3xl md:text-4xl">How we&apos;re organised</h2>
-              <p className="mt-2 text-ink/70">Four Karyavibhag — the divisions through which we act.</p>
+              <p className="mt-2 text-ink/70">Seven Karyavibhag — the divisions through which we act.</p>
             </div>
             <Link href="/karyavibhag" className="text-sm font-semibold text-vana hover:text-vana-dark">
               All divisions →

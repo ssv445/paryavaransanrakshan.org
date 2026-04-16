@@ -6,7 +6,7 @@ import { WarliTree, WarliNoPlastic, WarliWater, WarliHouse } from "@/components/
 
 export const metadata: Metadata = {
   title: "Programs",
-  description: "Our four pillars: Plantation, Polythene Free, Save Water, and Harit Ghar.",
+  description: "Three campaigns — Plantation, Polythene Free, Save Water — plus the Harit Ghar operational model.",
 };
 
 const iconMap: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {

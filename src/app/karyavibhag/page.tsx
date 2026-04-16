@@ -2,11 +2,20 @@ import type { Metadata } from "next";
 import type { ComponentType, SVGProps } from "react";
 import Link from "next/link";
 import { karyavibhag } from "@/lib/content";
-import { WarliTemple, WarliWoman, WarliHandshake, WarliSchool } from "@/components/illustrations";
+import {
+  WarliTemple,
+  WarliWoman,
+  WarliHandshake,
+  WarliSchool,
+  WarliCommunity,
+  WarliMegaphone,
+  WarliDialogue,
+  WarliYouth,
+} from "@/components/illustrations";
 
 export const metadata: Metadata = {
   title: "Karyavibhag",
-  description: "The four divisions through which Paryavaran Sanrakshan organises its work.",
+  description: "The seven divisions through which Paryavaran Sanrakshan organises its work.",
 };
 
 const iconMap: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
@@ -14,6 +23,10 @@ const iconMap: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
   "nari-shakti": WarliWoman,
   "ngo-coordination": WarliHandshake,
   "educational-institutes": WarliSchool,
+  "samajik-sansthan": WarliCommunity,
+  "jan-sampark": WarliMegaphone,
+  "jan-samwad": WarliDialogue,
+  "yuvashakti": WarliYouth,
 };
 
 export default function KaryavibhagHub() {
@@ -22,7 +35,7 @@ export default function KaryavibhagHub() {
       <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">Karyavibhag</p>
       <h1 className="text-4xl md:text-5xl">How we&apos;re organised</h1>
       <p className="mt-4 max-w-2xl text-lg text-ink/75">
-        Four Karyavibhag — specialised divisions through which the movement works with different communities.
+        Seven Karyavibhag — specialised divisions through which the movement works with different communities.
       </p>
       <div className="mt-12 grid gap-4 sm:grid-cols-2">
         {karyavibhag.map((k) => {
