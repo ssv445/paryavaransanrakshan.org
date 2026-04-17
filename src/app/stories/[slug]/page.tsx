@@ -51,16 +51,25 @@ export default async function StoryDetail({ params }: { params: Promise<Params> 
         )}
       </div>
 
-      {entry.heroImage && (
-        <div className="mt-8 overflow-hidden rounded-2xl border border-ink/10 bg-cream">
-          <Image
-            src={entry.heroImage}
-            alt={entry.title}
-            width={1500}
-            height={844}
-            className="h-auto w-full"
-            priority
-          />
+      {entry.images && entry.images.length > 0 && (
+        <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {entry.images.map((src, i) => (
+            <div
+              key={src}
+              className={`overflow-hidden rounded-2xl border border-ink/10 bg-cream ${
+                entry.images!.length === 1 || i === 0 ? "sm:col-span-2" : ""
+              }`}
+            >
+              <Image
+                src={src}
+                alt={`${entry.title} — image ${i + 1}`}
+                width={1500}
+                height={844}
+                className="h-auto w-full"
+                priority={i === 0}
+              />
+            </div>
+          ))}
         </div>
       )}
 

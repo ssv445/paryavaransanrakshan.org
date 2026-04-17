@@ -31,10 +31,10 @@ export default function EventsIndex() {
                   href={`/events/${e.slug}`}
                   className="group overflow-hidden rounded-2xl border border-ink/10 bg-white/60 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
                 >
-                  {e.heroImage && (
+                  {e.images?.[0] && (
                     <div className="aspect-[16/9] overflow-hidden bg-cream">
                       <Image
-                        src={e.heroImage}
+                        src={e.images[0]}
                         alt={e.title}
                         width={750}
                         height={422}

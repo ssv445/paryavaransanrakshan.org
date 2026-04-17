@@ -32,10 +32,10 @@ export default function StoriesIndex() {
               href={`/stories/${s.slug}`}
               className="group overflow-hidden rounded-2xl border border-ink/10 bg-white/60 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
             >
-              {s.heroImage && (
+              {s.images?.[0] && (
                 <div className="aspect-[16/9] overflow-hidden bg-cream">
                   <Image
-                    src={s.heroImage}
+                    src={s.images[0]}
                     alt={s.title}
                     width={750}
                     height={422}

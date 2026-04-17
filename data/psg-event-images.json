@@ -1,0 +1,65 @@
+{
+  "events": {
+    "formal-declaration-gwalior": [
+      "/images/events/formal-declaration-gwalior/01.png"
+    ],
+    "world-earth-day-poster": [
+      "/images/events/world-earth-day-poster/01.png",
+      "/images/events/world-earth-day-poster/02.png",
+      "/images/events/world-earth-day-poster/03.png",
+      "/images/events/world-earth-day-poster/04.png"
+    ],
+    "prakruti-vandana": [
+      "/images/events/prakruti-vandana/01.png"
+    ],
+    "paryavaran-prahari": [
+      "/images/events/paryavaran-prahari/01.png"
+    ],
+    "eco-bricks": [
+      "/images/events/eco-bricks/01.png"
+    ],
+    "haridwar-kumbh": [
+      "/images/events/haridwar-kumbh/01.png"
+    ],
+    "youth-parliament-2022": [
+      "/images/events/youth-parliament-2022/01.png"
+    ],
+    "world-wetland-day-conference": [
+      "/images/events/world-wetland-day-conference/01.png"
+    ],
+    "coastal-cleanup-2022": [
+      "/images/events/coastal-cleanup-2022/01.png",
+      "/images/events/coastal-cleanup-2022/02.png",
+      "/images/events/coastal-cleanup-2022/03.png",
+      "/images/events/coastal-cleanup-2022/04.png",
+      "/images/events/coastal-cleanup-2022/05.png",
+      "/images/events/coastal-cleanup-2022/06.png"
+    ],
+    "mahakumbh-ek-thali-ek-thaila": [
+      "/images/events/mahakumbh-ek-thali-ek-thaila/01.jpg",
+      "/images/events/mahakumbh-ek-thali-ek-thaila/02.jpg",
+      "/images/events/mahakumbh-ek-thali-ek-thaila/03.jpg",
+      "/images/events/mahakumbh-ek-thali-ek-thaila/04.jpg"
+    ],
+    "ngo-harit-samvad-2025": [
+      "/images/events/ngo-harit-samvad-2025/01.jpg"
+    ],
+    "eno-harit-samvad-chandigarh": [
+      "/images/events/eno-harit-samvad-chandigarh/01.png"
+    ],
+    "kulpati-harit-samvad-surat": [
+      "/images/events/kulpati-harit-samvad-surat/01.png"
+    ],
+    "bimstec-sewocon-2025": [
+      "/images/events/bimstec-sewocon-2025/01.png"
+    ],
+    "green-prison-chhattisgarh": [
+      "/images/events/green-prison-chhattisgarh/01.png"
+    ]
+  },
+  "stories": {
+    "polythene-mukt-mohgaon": [
+      "/images/stories/polythene-mukt-mohgaon/01.png"
+    ]
+  }
+}
