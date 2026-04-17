@@ -50,12 +50,50 @@ function readCollection<T extends Entry>(kind: string): T[] {
     });
 }
 
+/**
+ * Parse an event `date` string into a sortable (year, month, day) tuple.
+ * Accepts: "2020", "January 2025", "10 March 2019".
+ * Missing month/day default to 0 so date-less entries sort to the end of their year.
+ */
+const MONTHS: Record<string, number> = {
+  january: 1, february: 2, march: 3, april: 4, may: 5, june: 6,
+  july: 7, august: 8, september: 9, october: 10, november: 11, december: 12,
+};
+
+function dateKey(date: string, fallbackYear: number): [number, number, number] {
+  const tokens = date.trim().split(/\s+/);
+  let year = fallbackYear;
+  let month = 0;
+  let day = 0;
+  if (tokens.length === 1) {
+    // "2020"
+    const y = parseInt(tokens[0], 10);
+    if (!Number.isNaN(y)) year = y;
+  } else if (tokens.length === 2) {
+    // "January 2025"
+    month = MONTHS[tokens[0].toLowerCase()] ?? 0;
+    const y = parseInt(tokens[1], 10);
+    if (!Number.isNaN(y)) year = y;
+  } else if (tokens.length >= 3) {
+    // "10 March 2019"
+    const d = parseInt(tokens[0], 10);
+    if (!Number.isNaN(d)) day = d;
+    month = MONTHS[tokens[1].toLowerCase()] ?? 0;
+    const y = parseInt(tokens[2], 10);
+    if (!Number.isNaN(y)) year = y;
+  }
+  return [year, month, day];
+}
+
 export const programs: Entry[] = readCollection<Entry>("programs");
 export const karyavibhag: Entry[] = readCollection<Entry>("karyavibhag");
 
-// Events: newest first (by year, stable within year).
-export const events: EventEntry[] = readCollection<EventEntry>("events").sort(
-  (a, b) => b.year - a.year,
-);
+// Events: sort by full date (year, month, day) descending.
+// Entries with only a year fall to the end of their year.
+export const events: EventEntry[] = readCollection<EventEntry>("events").sort((a, b) => {
+  const [ay, am, ad] = dateKey(a.date, a.year);
+  const [by, bm, bd] = dateKey(b.date, b.year);
+  return by - ay || bm - am || bd - ad;
+});
 
 export const stories: StoryEntry[] = readCollection<StoryEntry>("stories");
