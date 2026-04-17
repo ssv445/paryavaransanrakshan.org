@@ -24,19 +24,25 @@ export default function StoryPage() {
         </p>
         <h2 className="mt-2 text-2xl md:text-3xl">Khejarli, 1730</h2>
         <div className="mt-4 space-y-4 text-base leading-relaxed text-ink/85 md:text-lg">
-          <p>
+          <p lang="hi" className="font-devanagari">
+            सन <strong>1730</strong> में राजस्थान के मारवाड़ में खेजड़ली नामक
+            स्थान पर जोधपुर के महाराजा द्वारा हरे पेड़ों को काटने से बचाने के
+            लिए, <strong>अमृता देवी</strong> ने अपनी तीन बेटियों आसू, रत्नी और
+            भागू के साथ अपने प्राण त्याग दिए। उसके साथ{" "}
+            <strong>363 से अधिक विश्नोई समाज के लोगों</strong> ने, खेजड़ी के
+            पेड़ों को बचाने के लिए बलिदान दे दिया।
+          </p>
+          <p className="text-sm text-ink/70 md:text-base">
             In <strong>1730</strong>, at a place called Khejarli in Marwar,
             Rajasthan, the Maharaja of Jodhpur ordered the felling of green trees
             for his palace. <strong>Amrita Devi Bishnoi</strong> — along with her
             three daughters Asu, Ratni and Bhagu — embraced the khejri trees and
-            laid down their lives to stop the cutting.
-          </p>
-          <p>
-            More than <strong>363 members of the Bishnoi community</strong>{" "}
-            followed them, sacrificing their lives to protect the trees. It is the
-            earliest recorded instance of a community laying down its life for the
-            environment — and the spiritual origin point Paryavaran Sanrakshan
-            returns to again and again.
+            laid down their lives to stop the cutting. More than{" "}
+            <strong>363 members of the Bishnoi community</strong> followed them,
+            sacrificing their lives to protect the trees — the earliest recorded
+            instance of a community laying down its life for the environment, and
+            the spiritual origin point Paryavaran Sanrakshan returns to again and
+            again.
           </p>
         </div>
       </section>
