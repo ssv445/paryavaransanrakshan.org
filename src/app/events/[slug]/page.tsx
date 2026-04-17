@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Calendar } from "lucide-react";
@@ -39,6 +40,19 @@ export default async function EventDetail({ params }: { params: Promise<Params> 
         <Calendar className="h-4 w-4" aria-hidden />
         {entry.date}
       </div>
+
+      {entry.heroImage && (
+        <div className="mt-8 overflow-hidden rounded-2xl border border-ink/10 bg-cream">
+          <Image
+            src={entry.heroImage}
+            alt={entry.title}
+            width={1500}
+            height={844}
+            className="h-auto w-full"
+            priority
+          />
+        </div>
+      )}
 
       <div className="mt-8 space-y-6 text-lg leading-relaxed text-ink/85">
         {entry.intro && <p>{entry.intro}</p>}

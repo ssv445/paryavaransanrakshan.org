@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { stories } from "@/lib/content";
@@ -29,21 +30,34 @@ export default function StoriesIndex() {
             <Link
               key={s.slug}
               href={`/stories/${s.slug}`}
-              className="group rounded-2xl border border-ink/10 bg-white/60 p-6 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
+              className="group overflow-hidden rounded-2xl border border-ink/10 bg-white/60 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
             >
-              <div className="mb-3 flex items-center gap-2">
-                <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${badge.className}`}>
-                  {badge.label}
-                </span>
-                {s.location && (
-                  <span className="inline-flex items-center gap-1 text-xs text-muted">
-                    <MapPin className="h-3 w-3" aria-hidden /> {s.location}
+              {s.heroImage && (
+                <div className="aspect-[16/9] overflow-hidden bg-cream">
+                  <Image
+                    src={s.heroImage}
+                    alt={s.title}
+                    width={750}
+                    height={422}
+                    className="h-full w-full object-cover transition-transform group-hover:scale-[1.02]"
+                  />
+                </div>
+              )}
+              <div className="p-6">
+                <div className="mb-3 flex items-center gap-2">
+                  <span className={`rounded-full px-2.5 py-0.5 text-xs font-semibold ${badge.className}`}>
+                    {badge.label}
                   </span>
-                )}
+                  {s.location && (
+                    <span className="inline-flex items-center gap-1 text-xs text-muted">
+                      <MapPin className="h-3 w-3" aria-hidden /> {s.location}
+                    </span>
+                  )}
+                </div>
+                <h2 className="text-xl text-ink">{s.title}</h2>
+                <p className="mt-2 text-sm text-ink/70">{s.summary}</p>
+                <p className="mt-4 text-sm font-semibold text-vana group-hover:text-vana-dark">Read story →</p>
               </div>
-              <h2 className="text-xl text-ink">{s.title}</h2>
-              <p className="mt-2 text-sm text-ink/70">{s.summary}</p>
-              <p className="mt-4 text-sm font-semibold text-vana group-hover:text-vana-dark">Read story →</p>
             </Link>
           );
         })}

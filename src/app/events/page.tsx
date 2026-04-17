@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { events } from "@/lib/content";
 
@@ -28,12 +29,25 @@ export default function EventsIndex() {
                 <Link
                   key={e.slug}
                   href={`/events/${e.slug}`}
-                  className="group rounded-2xl border border-ink/10 bg-white/60 p-5 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
+                  className="group overflow-hidden rounded-2xl border border-ink/10 bg-white/60 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
                 >
-                  <p className="mb-1 text-xs font-medium text-muted">{e.date}</p>
-                  <h3 className="text-lg text-ink">{e.title}</h3>
-                  <p className="mt-1 text-sm text-ink/70">{e.summary}</p>
-                  <p className="mt-3 text-sm font-semibold text-vana group-hover:text-vana-dark">Read →</p>
+                  {e.heroImage && (
+                    <div className="aspect-[16/9] overflow-hidden bg-cream">
+                      <Image
+                        src={e.heroImage}
+                        alt={e.title}
+                        width={750}
+                        height={422}
+                        className="h-full w-full object-cover transition-transform group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  )}
+                  <div className="p-5">
+                    <p className="mb-1 text-xs font-medium text-muted">{e.date}</p>
+                    <h3 className="text-lg text-ink">{e.title}</h3>
+                    <p className="mt-1 text-sm text-ink/70">{e.summary}</p>
+                    <p className="mt-3 text-sm font-semibold text-vana group-hover:text-vana-dark">Read →</p>
+                  </div>
                 </Link>
               ))}
           </div>
