@@ -15,10 +15,10 @@ export const primaryNav: NavItem[] = [
 
 export const JOIN_URL = "https://ecomitram.app/";
 
+// Retired external resources: paryavaranperspective.com (E-Magazine),
+// paryavaranbharat.org (Media Center), sankalp.paryavaransanrakshan.org
+// (Sankalp Portal). Removed 2026-04 — sites no longer maintained.
 export const resources: NavItem[] = [
-  { label: "E-Magazine", href: "https://paryavaranperspective.com/", external: true },
-  { label: "Media Center", href: "https://paryavaranbharat.org/", external: true },
-  { label: "Sankalp Portal", href: "https://sankalp.paryavaransanrakshan.org/", external: true },
   { label: "EcoMitram App", href: "https://ecomitram.app/", external: true },
 ];
 
@@ -29,5 +29,7 @@ export const orgContact = {
   whatsapp:
     "https://api.whatsapp.com/send?phone=+918369837609&text=I'm%20interested%20in%20Paryavaran%20Sanrakshan",
   facebook: "https://www.facebook.com/psg.paryavaran.sanrakshan/",
-  twitter: "https://twitter.com/rsspsg",
+  twitter: "https://x.com/psgbharat",
+  instagram: "https://www.instagram.com/ecomitram",
+  youtube: "https://www.youtube.com/@paryavaransanrakshan6731",
 };

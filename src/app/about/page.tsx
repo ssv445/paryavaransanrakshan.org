@@ -12,6 +12,7 @@ const sections = [
   { href: "/about/logo", title: "Our Logo", blurb: "Symbols and meaning behind our identity." },
   { href: "/about/presence", title: "Our Presence", blurb: "Where we are active across India." },
   { href: "/about/panch-parivartan", title: "Panch Parivartan", blurb: "The five-point transformation model." },
+  { href: "/about/design", title: "रचना और शिल्प · Design & Craft", blurb: "लोक-कला, रंग और तकनीक — इस साइट के पीछे का विचार।" },
 ];
 
 export default function AboutHub() {
