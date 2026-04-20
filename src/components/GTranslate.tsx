@@ -3,31 +3,41 @@
 import Script from "next/script";
 
 /**
- * GTranslate widget — lets visitors translate the site client-side.
- * We use the free "float" widget (no API key) configured for en + hi + mr + gu + ta.
- * Widget markup target: <div id="gtranslate_wrapper"></div>
+ * Google Translate widget — client-side translation.
+ *
+ * multilanguagePage: true tells Google to honour lang="hi" / lang="en"
+ * attributes on individual sections, so a Hindi-native section translates
+ * correctly when the visitor picks English, and vice-versa.
+ *
+ * autoDisplay: false — widget does nothing until the visitor picks a
+ * language from the dropdown.
+ *
+ * Previously used gtranslate.net's free dropdown which assumed a fixed
+ * source language per site — which broke on our Hindi-native pages.
  */
 export default function GTranslate() {
   return (
     <>
-      <div id="gtranslate_wrapper" className="flex items-center" />
-      <Script id="gtranslate-settings" strategy="afterInteractive">
+      <div id="google_translate_element" className="inline-block" />
+      <Script id="gt-settings" strategy="afterInteractive">
         {`
-          window.gtranslateSettings = {
-            default_language: "en",
-            native_language_names: true,
-            languages: ["en","hi","mr","gu","ta","bn","kn","te","pa"],
-            wrapper_selector: "#gtranslate_wrapper",
-            flag_style: "3d",
-            switcher_horizontal_position: "inline",
-            alt_flags: { en: "usa" },
+          window.googleTranslateElementInit = function () {
+            new window.google.translate.TranslateElement(
+              {
+                pageLanguage: "en",
+                includedLanguages: "en,hi,mr,gu,ta,bn,kn,te,pa,or,ml,as",
+                layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false,
+                multilanguagePage: true,
+              },
+              "google_translate_element"
+            );
           };
         `}
       </Script>
       <Script
-        src="https://cdn.gtranslate.net/widgets/latest/dropdown.js"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
         strategy="afterInteractive"
-        defer
       />
     </>
   );
