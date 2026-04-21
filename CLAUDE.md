@@ -1,5 +1,3 @@
-@AGENTS.md
-
 # Paryavaran Sanrakshan Gatividhi — Project Guide
 
 ## What is this?
@@ -9,18 +7,19 @@ A Next.js static website for **Paryavaran Sanrakshan Gatividhi** (पर्य�
 ## Architecture Decisions
 
 ### Stack
-- **Next.js 16** (App Router, Turbopack) + **TypeScript** + **Tailwind CSS 4** + **Framer Motion**
+- **Next.js 16** (App Router) + **React 19** + **TypeScript** + **Tailwind CSS 4** + **Framer Motion**
 - Hosted on **Vercel** (default SSG build — not `output: 'export'`, so we keep `next/image` optimization and API routes)
-- Contact form backend: **Resend** via `/api/contact/route.ts`
+- Contact form backend: **Resend** via `src/app/api/contact/route.ts`
+- Sitemap: `next-sitemap` + `src/app/sitemap.ts` + `src/app/robots.ts`
 
 ### No multi-language i18n
-We do NOT implement Next.js i18n routing. Instead, the free **GTranslate** widget (client-side) handles translation for visitors. All routes and content are English-slug only. The GTranslate widget is loaded in `src/components/GTranslate.tsx` via `next/script`.
+We do NOT implement Next.js i18n routing. Instead, **Google's native Translate widget** (`translate.google.com/translate_a/element.js`) handles translation client-side. It runs with `multilanguagePage: true` so Hindi-native sections (marked `lang="hi"`) translate correctly even when the visitor picks English. Loaded in `src/components/GTranslate.tsx` via `next/script`. All route slugs are English.
 
 ### No Join form — redirect to EcoMitram
-The "Join" CTA throughout the site is an **external link** to `https://ecomitram.app/`. There is no `/join` route — it 301-redirects to EcoMitram in `next.config.ts`. The only form on the site is `/contact`.
+The "Join" CTA throughout the site is an **external link** to `https://ecomitram.app/` (`JOIN_URL` in `src/lib/nav.ts`). There is no `/join` route — it 301-redirects to EcoMitram in `next.config.ts`. The only form on the site is `/contact`.
 
-### Content model — in-code registry (not MDX yet)
-All content lives in `src/lib/content.ts` as typed objects (Entry, EventEntry, StoryEntry). This was chosen for speed of migration. Future: move to MDX files in `/content/**` with gray-matter frontmatter.
+### Content model — Markdown files with frontmatter
+Content lives as `.md` files in `/content/<kind>/` (kinds: `events`, `karyavibhag`, `programs`, `stories`). `src/lib/content.ts` reads them at build time with `gray-matter` — frontmatter carries structured fields (title, date, type, etc.); body becomes the `intro` prose. To add content: drop a new `.md` file in the right folder. Typed as `Entry`, `EventEntry`, `StoryEntry`.
 
 ### Stories = unified content hub
 News, Gallery, Feeds, and Success Stories from the old WP site are **merged into a single `/stories` section**. Each story has a `type` field: `impact`, `dispatch`, or `photo-essay`. The old `/feeds`, `/gallery`, `/success-stories`, `/latest-news` URLs all 301-redirect to `/stories`.
@@ -62,22 +61,28 @@ Toggled via `ThemeToggle` component (moon/sun icon in header). Uses `.dark` clas
 │   ├─ /about/story
 │   ├─ /about/logo
 │   ├─ /about/presence
-│   └─ /about/panch-parivartan
-├─ /programs/              Programs (hub)
+│   ├─ /about/panch-parivartan
+│   └─ /about/design         (colophon — design system, typography, palette)
+├─ /programs/              Programs (hub + [slug] route reading content/programs/*.md)
 │   ├─ /programs/plantation
 │   ├─ /programs/polythene-free
 │   ├─ /programs/save-water
 │   └─ /programs/harit-ghar
-├─ /karyavibhag/           Karyavibhag (hub)
+├─ /karyavibhag/           Karyavibhag (hub + [slug] route reading content/karyavibhag/*.md)
 │   ├─ /karyavibhag/religious-institutes
 │   ├─ /karyavibhag/nari-shakti
-│   ├─ /karyavibhag/ngo-coordination
-│   └─ /karyavibhag/educational-institutes
+│   ├─ /karyavibhag/samajik-sansthan       (was "ngo-coordination" — renamed)
+│   ├─ /karyavibhag/educational-institutes
+│   ├─ /karyavibhag/jan-sampark
+│   ├─ /karyavibhag/jan-samwad
+│   └─ /karyavibhag/yuvashakti
 ├─ /events/                Events (index + [slug])
 ├─ /stories/               Stories (unified: impact/dispatch/photo-essay)
 ├─ /resources/             Resources (external links hub)
 └─ /contact/               Contact (form + info)
 ```
+
+**Dynamic routes**: `programs/[slug]`, `karyavibhag/[slug]`, `events/[slug]`, `stories/[slug]` — all source from `/content/<kind>/<slug>.md`. The hub pages (`programs/page.tsx`, etc.) list entries.
 
 ### Primary navigation
 ```
@@ -107,9 +112,9 @@ Without `RESEND_API_KEY`, the contact form logs submissions to console (safe for
 ## Key Commands
 
 ```bash
-npm run dev        # Start dev server (Turbopack)
-npm run build      # Production build (42 static pages)
-npm run lint       # ESLint
+npm run dev        # Start dev server on :3000
+npm run build      # Production build (static pages + route handlers)
+npm run lint       # ESLint (flat config, eslint-config-next)
 npm start          # Serve production build locally
 ```
 
@@ -117,13 +122,15 @@ npm start          # Serve production build locally
 
 | Service | URL | Purpose |
 |---|---|---|
-| EcoMitram App | https://ecomitram.app/ | Join/volunteer portal |
-| E-Magazine | https://paryavaranperspective.com/ | Quarterly magazine |
-| Media Center | https://paryavaranbharat.org/ | Press & media |
-| Sankalp Portal | https://sankalp.paryavaransanrakshan.org/ | Pledge tracking |
+| EcoMitram App | https://ecomitram.app/ | Join/volunteer portal (primary CTA) |
 
-## Contact
+Retired 2026-04 (no longer maintained, do not re-add): paryavaranperspective.com (E-Magazine), paryavaranbharat.org (Media Center), sankalp.paryavaransanrakshan.org (Sankalp Portal). See comment in `src/lib/nav.ts`.
+
+## Contact & Socials (source of truth: `src/lib/nav.ts` → `orgContact`)
 - Phone: +91 8369-837-609
 - Email: [email protected]
+- WhatsApp: wa.me link via `orgContact.whatsapp`
 - Facebook: https://www.facebook.com/psg.paryavaran.sanrakshan/
-- Twitter/X: https://twitter.com/rsspsg
+- Twitter/X: https://x.com/psgbharat
+- Instagram: https://www.instagram.com/ecomitram
+- YouTube: https://www.youtube.com/@paryavaransanrakshan6731

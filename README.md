@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# paryavaransanrakshan.org
 
-## Getting Started
+The official website for **Paryavaran Sanrakshan Gatividhi** (पर्यावरण संरक्षण गतिविधि) — an all-India environmental movement focused on plantation, water conservation, polythene-free drives, and green homes. Migrated from a legacy WordPress site.
 
-First, run the development server:
+## Stack
+
+- [Next.js 16](https://nextjs.org) (App Router) + [React 19](https://react.dev)
+- TypeScript · [Tailwind CSS 4](https://tailwindcss.com) · [Framer Motion](https://www.framer.com/motion/)
+- Content: Markdown files in `/content/**` parsed with `gray-matter`
+- Contact form: [Resend](https://resend.com) (`src/app/api/contact/route.ts`)
+- Translation: Google's native Translate widget (client-side, 12 Indian languages)
+- Sitemap/robots: `next-sitemap` + `src/app/sitemap.ts` + `src/app/robots.ts`
+- Hosted on [Vercel](https://vercel.com)
+
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev            # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other scripts:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build          # production build
+npm start              # serve the production build locally
+npm run lint           # ESLint (flat config)
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment variables
 
-## Learn More
+Only the contact form needs env vars. Create `.env.local`:
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Required | Default | Purpose |
+|---|---|---|---|
+| `RESEND_API_KEY` | Production | — | Send contact form emails via Resend |
+| `CONTACT_TO_EMAIL` | No | `[email protected]` | Recipient |
+| `CONTACT_FROM_EMAIL` | No | `Paryavaran Sanrakshan <noreply@…>` | Sender (must be a verified Resend domain) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Without `RESEND_API_KEY`, the contact endpoint logs submissions to the console instead of sending — safe for dev/preview.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project layout
 
-## Deploy on Vercel
+```
+content/              Markdown content (events, karyavibhag, programs, stories)
+public/               Static assets (brand/, images/)
+src/
+  app/                Next.js App Router routes + api/
+  components/         React components (Header, Footer, illustrations, motion)
+  lib/
+    content.ts        Reads /content/** at build time via gray-matter
+    nav.ts            Primary nav, Join URL, org contact/socials
+next.config.ts        Legacy WordPress → new IA 301 redirects
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Adding content
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Drop a new `.md` file into the matching folder; the route picks it up on next build.
+
+```
+content/programs/<slug>.md
+content/karyavibhag/<slug>.md
+content/events/<slug>.md
+content/stories/<slug>.md
+```
+
+Frontmatter fields are typed in `src/lib/content.ts` (`Entry`, `EventEntry`, `StoryEntry`). The Markdown body becomes the `intro` prose.
+
+### URL redirects
+
+All legacy WordPress URLs (date-slug permalinks, old section paths, `/feeds`, `/gallery`, `/success-stories`, `/latest-news`, `/join`, etc.) are 301-redirected in `next.config.ts`. When renaming routes, add a redirect there.
+
+## Design system
+
+Indian folk-art visual language — see `/about/design` (the colophon page) for the live reference.
+
+- **Warli** — SVG icons for Programs and Karyavibhag tiles
+- **Madhubani** — "Tree of Life" hero panel with scroll-triggered stroke animation
+- **Kolam** — footer divider and card corner ornament
+- Palette: `cream` `ink` `vana` `indigo` `haldi` `terracotta` `muted` (natural-dye inspired)
+- Fonts (via `next/font/google`): IBM Plex Sans (body), Yatra One (display, latin+devanagari), Tiro Devanagari Hindi (mantra/Hindi labels)
+- Dark mode ("evening lamp") via `.dark` class on `<html>`, persisted in localStorage, FOUC-free
+
+## Deployment
+
+Push to the main branch; Vercel builds automatically. No `output: 'export'` — we want `next/image` optimization and the `/api/contact` route handler. Set the env vars above in the Vercel dashboard.
+
+## Links
+
+- EcoMitram (volunteer portal, "Join" CTA): https://ecomitram.app/
+- Contact: [email protected] · +91 8369-837-609
