@@ -4,13 +4,13 @@ import type { SVGProps } from "react";
  * Godna-inspired village scene — a folk-art horizon reading left-to-right:
  * sun, breeze, birds, pond with lotus, cow, tree of life, happy farmer
  * with arms raised, hut with smoke, crop rows, village figures, more birds,
- * curling wind lines. Monochrome line art, `currentColor`-driven, designed
- * to sit as a full-width band at ~200px tall.
+ * curling wind lines. Line art painted in the five PSG brand colours so the
+ * mural echoes the logo (haldi/vana/cream/terracotta) on an indigo sky.
  *
- * Use on a dark surface (footer indigo) with `text-haldi/*` for the classic
- * Godna chalk-on-mud-wall feel. Every element is a stylised glyph, not
- * literal illustration — the scene tells the Panch-Parivartan story:
- * self-sustaining homes, water care, green living, community.
+ * Each zone is its own `<g>` with a Tailwind colour class; `currentColor`
+ * resolves per-group so strokes and filled accents inherit the zone hue.
+ * The scene tells the Panch-Parivartan story: self-sustaining homes, water
+ * care, green living, community.
  */
 export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
   return (
@@ -24,23 +24,26 @@ export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
       aria-hidden
       {...props}
     >
-      {/* ═══════════════ GROUND LINE ═══════════════ */}
-      <line x1="0" y1="230" x2="1400" y2="230" strokeWidth={1.2} />
-      {/* tiny tuft marks along ground */}
-      {Array.from({ length: 28 }).map((_, i) => (
-        <path key={`tuft-${i}`} d={`M${30 + i * 50} 230 l-3 -5 M${30 + i * 50} 230 l3 -5`} strokeWidth={0.8} opacity={0.7} />
-      ))}
+      {/* ═══════════════ GROUND LINE (haldi horizon) ═══════════════ */}
+      <g className="text-haldi">
+        <line x1="0" y1="230" x2="1400" y2="230" strokeWidth={1.2} />
+        {/* tiny tuft marks along ground */}
+        {Array.from({ length: 28 }).map((_, i) => (
+          <path key={`tuft-${i}`} d={`M${30 + i * 50} 230 l-3 -5 M${30 + i * 50} 230 l3 -5`} strokeWidth={0.8} opacity={0.7} />
+        ))}
+      </g>
 
-      {/* ═══════════════ SKY — BREEZE CURLS ═══════════════ */}
-      {/* scattered S-curves across the sky for wind */}
-      <path d="M60 50 q8 -10 16 0 q8 10 16 0" strokeWidth={1} opacity={0.55} fill="none" />
-      <path d="M320 35 q10 -10 20 0 q10 10 20 0 q10 -10 20 0" strokeWidth={1} opacity={0.55} fill="none" />
-      <path d="M720 40 q8 -10 16 0 q8 10 16 0 q8 -10 16 0" strokeWidth={1} opacity={0.5} fill="none" />
-      <path d="M1080 55 q10 -10 20 0 q10 10 20 0" strokeWidth={1} opacity={0.55} fill="none" />
-      <path d="M1260 30 q8 -10 16 0 q8 10 16 0 q8 -10 16 0" strokeWidth={1} opacity={0.5} fill="none" />
+      {/* ═══════════════ SKY — BREEZE CURLS (cream wind) ═══════════════ */}
+      <g className="text-cream/60">
+        <path d="M60 50 q8 -10 16 0 q8 10 16 0" strokeWidth={1} fill="none" />
+        <path d="M320 35 q10 -10 20 0 q10 10 20 0 q10 -10 20 0" strokeWidth={1} fill="none" />
+        <path d="M720 40 q8 -10 16 0 q8 10 16 0 q8 -10 16 0" strokeWidth={1} fill="none" />
+        <path d="M1080 55 q10 -10 20 0 q10 10 20 0" strokeWidth={1} fill="none" />
+        <path d="M1260 30 q8 -10 16 0 q8 10 16 0 q8 -10 16 0" strokeWidth={1} fill="none" />
+      </g>
 
-      {/* ═══════════════ SUN (upper-left) ═══════════════ */}
-      <g transform="translate(130 80)">
+      {/* ═══════════════ SUN (haldi, upper-left) ═══════════════ */}
+      <g className="text-haldi" transform="translate(130 80)">
         <circle r="18" fill="currentColor" opacity={0.9} />
         <circle r="28" fill="none" strokeWidth={1} />
         {[0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330].map((a) => {
@@ -58,21 +61,18 @@ export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
         })}
       </g>
 
-      {/* ═══════════════ BIRDS (V-pairs flying in formation) ═══════════════ */}
-      <g strokeWidth={1.3}>
+      {/* ═══════════════ BIRDS — cream silhouettes ═══════════════ */}
+      <g className="text-cream/80" strokeWidth={1.3}>
         <path d="M240 70 q5 -5 10 0 q5 -5 10 0" fill="none" />
         <path d="M270 85 q5 -5 10 0 q5 -5 10 0" fill="none" />
         <path d="M210 95 q5 -5 10 0 q5 -5 10 0" fill="none" />
-      </g>
-      {/* second flock, right half of sky */}
-      <g strokeWidth={1.3}>
         <path d="M890 80 q5 -5 10 0 q5 -5 10 0" fill="none" />
         <path d="M920 70 q5 -5 10 0 q5 -5 10 0" fill="none" />
         <path d="M950 85 q5 -5 10 0 q5 -5 10 0" fill="none" />
       </g>
 
-      {/* ═══════════════ POND with lotus (left of centre) ═══════════════ */}
-      <g transform="translate(310 210)">
+      {/* ═══════════════ POND with lotus (cream water on indigo) ═══════════════ */}
+      <g className="text-cream/85" transform="translate(310 210)">
         {/* pond outline */}
         <ellipse cx="0" cy="15" rx="60" ry="14" fill="none" strokeWidth={1.2} />
         {/* ripples */}
@@ -89,8 +89,8 @@ export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
         </g>
       </g>
 
-      {/* ═══════════════ COW (just right of pond, grazing) ═══════════════ */}
-      <g transform="translate(470 180)" strokeWidth={1.4}>
+      {/* ═══════════════ COW (terracotta, grazing) ═══════════════ */}
+      <g className="text-terracotta" transform="translate(470 180)" strokeWidth={1.4}>
         {/* body — simple elongated rectangle with rounded edges */}
         <path d="M -30 10 h 60 v 22 h -60 z" fill="none" />
         {/* legs */}
@@ -110,8 +110,8 @@ export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
         <circle cx="0" cy="34" r="3" fill="none" />
       </g>
 
-      {/* ═══════════════ TREE OF LIFE (centre anchor) ═══════════════ */}
-      <g transform="translate(650 230)" strokeWidth={1.5}>
+      {/* ═══════════════ TREE OF LIFE (vana, centre anchor) ═══════════════ */}
+      <g className="text-vana" transform="translate(650 230)" strokeWidth={1.5}>
         {/* trunk */}
         <line x1="0" y1="0" x2="0" y2="-110" strokeWidth={2} />
         {/* roots */}
@@ -139,8 +139,8 @@ export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
         <circle cx="0" cy="-122" r="2" fill="currentColor" />
       </g>
 
-      {/* ═══════════════ HAPPY FARMER (arms raised, right of tree) ═══════════════ */}
-      <g transform="translate(780 230)" strokeWidth={1.4}>
+      {/* ═══════════════ HAPPY FARMER (haldi, arms raised) ═══════════════ */}
+      <g className="text-haldi" transform="translate(780 230)" strokeWidth={1.4}>
         {/* head */}
         <circle cx="0" cy="-80" r="9" fill="none" />
         {/* body/torso */}
@@ -158,9 +158,8 @@ export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
         <path d="M-3 -80 q3 3 6 0" strokeWidth={0.8} fill="none" />
       </g>
 
-      {/* ═══════════════ CROP ROWS (foreground, between farmer and hut) ═══════════════ */}
-      <g strokeWidth={1}>
-        {/* three rows of stylised crops — simple chevrons repeating */}
+      {/* ═══════════════ CROP ROWS (vana, between farmer and hut) ═══════════════ */}
+      <g className="text-vana" strokeWidth={1}>
         {Array.from({ length: 10 }).map((_, i) => {
           const x = 820 + i * 14;
           return (
@@ -171,8 +170,8 @@ export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
         })}
       </g>
 
-      {/* ═══════════════ HUT (self-sustaining home) ═══════════════ */}
-      <g transform="translate(1020 230)" strokeWidth={1.4}>
+      {/* ═══════════════ HUT (terracotta, self-sustaining home) ═══════════════ */}
+      <g className="text-terracotta" transform="translate(1020 230)" strokeWidth={1.4}>
         {/* walls */}
         <rect x="-36" y="-46" width="72" height="46" fill="none" />
         {/* pitched roof */}
@@ -181,12 +180,14 @@ export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
         <rect x="-10" y="-28" width="20" height="28" fill="none" />
         {/* window */}
         <rect x="16" y="-34" width="12" height="12" fill="none" />
-        {/* smoke curling from chimney */}
-        <path d="M 10 -86 q 6 -10 0 -16 q -6 -6 0 -14 q 6 -8 0 -14" strokeWidth={1} opacity={0.75} fill="none" />
+      </g>
+      {/* smoke curling — cream wisp rising from the terracotta hut */}
+      <g className="text-cream/65">
+        <path d="M 1030 144 q 6 -10 0 -16 q -6 -6 0 -14 q 6 -8 0 -14" strokeWidth={1} fill="none" />
       </g>
 
-      {/* ═══════════════ SMALLER TREE (right of hut) ═══════════════ */}
-      <g transform="translate(1130 230)" strokeWidth={1.2}>
+      {/* ═══════════════ SMALLER TREE (vana, right of hut) ═══════════════ */}
+      <g className="text-vana" transform="translate(1130 230)" strokeWidth={1.2}>
         <line x1="0" y1="0" x2="0" y2="-60" />
         <line x1="0" y1="-20" x2="-14" y2="-30" />
         <line x1="0" y1="-20" x2="14" y2="-30" />
@@ -199,8 +200,8 @@ export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
         <circle cx="0" cy="-60" r="1.8" fill="currentColor" />
       </g>
 
-      {/* ═══════════════ TWO WALKING VILLAGE FIGURES (right) ═══════════════ */}
-      <g transform="translate(1210 230)" strokeWidth={1.2}>
+      {/* ═══════════════ TWO WALKING VILLAGE FIGURES (haldi, right) ═══════════════ */}
+      <g className="text-haldi" transform="translate(1210 230)" strokeWidth={1.2}>
         {/* figure 1 */}
         <circle cx="0" cy="-50" r="6" fill="none" />
         <line x1="0" y1="-44" x2="0" y2="-18" />
@@ -220,8 +221,8 @@ export default function GodnaVillage(props: SVGProps<SVGSVGElement>) {
         <path d="M8 -24 q3 -2 6 0" fill="none" />
       </g>
 
-      {/* ═══════════════ LOW PLANT TUFTS (foreground right) ═══════════════ */}
-      <g strokeWidth={1} opacity={0.9}>
+      {/* ═══════════════ LOW PLANT TUFTS (vana, foreground right) ═══════════════ */}
+      <g className="text-vana" strokeWidth={1} opacity={0.9}>
         {[1290, 1310, 1340, 1370].map((x, i) => (
           <path key={`plant-${i}`} d={`M${x} 240 l-3 -10 l3 4 l3 -10 M${x} 240 v-10`} fill="none" />
         ))}
