@@ -112,11 +112,21 @@ Without `RESEND_API_KEY`, the contact form logs submissions to console (safe for
 ## Key Commands
 
 ```bash
-npm run dev        # Start dev server on :3000
+npm run dev        # Start dev server → http://psg.localhost:1355  (via portless)
 npm run build      # Production build (static pages + route handlers)
 npm run lint       # ESLint (flat config, eslint-config-next)
-npm start          # Serve production build locally
+npm start          # Serve production build locally (port 3000)
 ```
+
+### Dev server uses portless — always
+
+`npm run dev` is wired to [`portless`](https://www.npmjs.com/package/portless): `portless psg next dev`. Portless assigns a random free port to Next.js and routes `http://psg.localhost:1355` to it via a reverse-proxy daemon. Benefits: no `EADDRINUSE`, stable URL across restarts, no collision with other local projects.
+
+**Prereq**: `npm i -g portless` (one-time, globally). Proxy auto-starts on first `npm run dev`.
+
+**Preview URL for everything**: `http://psg.localhost:1355` — use this (not `localhost:3000`) when testing, screenshotting, sharing with teammates, or configuring OAuth/CORS.
+
+**Bypass**: `PORTLESS=0 npm run dev` runs plain `next dev` on `:3000` if you ever need to.
 
 ## External Services & Links
 

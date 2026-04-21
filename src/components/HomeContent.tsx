@@ -7,6 +7,8 @@ import { JOIN_URL } from "@/lib/nav";
 import { FadeIn, StaggerChildren, staggerItem } from "@/components/motion";
 import {
   AnimatedMadhubaniHero,
+  AnimatedWarli,
+  KolamDivider,
   WarliTree,
   WarliNoPlastic,
   WarliWater,
@@ -31,27 +33,64 @@ const karyavibhag = [
   { slug: "educational-institutes", title: "Educational Institutes", summary: "Environment in every classroom and campus.", Icon: WarliSchool },
 ];
 
+/** Section divider — Kolam pattern, swappable colorway */
+function KolamMeter({ color = "text-haldi" }: { color?: string }) {
+  return (
+    <div className="mx-auto max-w-7xl px-4 lg:px-8" aria-hidden>
+      <KolamDivider className={`mx-auto h-6 w-full opacity-70 ${color}`} />
+    </div>
+  );
+}
+
 export default function HomeContent() {
   return (
     <>
-      {/* Hero */}
+      {/* ───────────────── Hero — broken, Madhubani bleeds off-canvas ───────────────── */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 lg:grid-cols-2 lg:items-center lg:gap-12 lg:px-8 lg:py-24">
-          <FadeIn direction="left" duration={0.7}>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-terracotta">
+        {/*
+          Hero uses grid-area sharing on lg+: both the illustration and the headline live
+          in the same single grid cell, so section height = max(text, illustration).
+          Headline sits on z-10 and overlaps the tree canopy. On mobile the grid collapses
+          and the illustration stacks above the text as a normal block.
+        */}
+        <div className="relative mx-auto max-w-7xl px-4 py-14 lg:grid lg:grid-cols-1 lg:grid-rows-1 lg:px-8 lg:py-24">
+          {/* Illustration: bleeds off right edge on lg+ */}
+          <FadeIn
+            direction="right"
+            delay={0.15}
+            duration={0.9}
+            className="mb-8 lg:col-start-1 lg:row-start-1 lg:mb-0 lg:-mr-16 lg:w-[58%] lg:justify-self-end xl:-mr-24"
+          >
+            <AnimatedMadhubaniHero className="mx-auto w-full max-w-sm lg:max-w-none" />
+          </FadeIn>
+
+          {/* Headline — overlaps the canopy on lg+ via z-index, shares the grid cell */}
+          <FadeIn
+            direction="left"
+            duration={0.7}
+            className="relative z-10 lg:col-start-1 lg:row-start-1 lg:max-w-[62%] lg:self-center"
+          >
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-terracotta">
               An all-India movement
             </p>
-            <h1 className="text-4xl text-ink md:text-6xl">
-              Caring for the earth, as one cares for a mother.
+            <h1 className="text-4xl text-ink md:text-6xl lg:text-[4.25rem] lg:leading-[1.05]">
+              Caring for the earth,
+              <span className="block text-vana">as one cares for a mother.</span>
             </h1>
-            <p className="mt-4 font-devanagari text-xl text-vana md:text-2xl">
+
+            {/* Mantra — larger, terracotta, slightly off-axis */}
+            <p
+              className="mt-6 inline-block origin-left font-devanagari text-2xl italic text-terracotta md:text-3xl"
+              style={{ transform: "rotate(-1.5deg)" }}
+            >
               || माता भूमि: पुत्रों अहम् पृथिव्या: ||
             </p>
+
             <p className="mt-6 max-w-xl text-lg text-ink/75">
-              Paryavaran Sanrakshan Gatividhi is a volunteer-led movement across India,
-              dedicated to improving the environment through plantation, water conservation,
-              polythene-free drives and green homes.
+              Paryavaran Sanrakshan Gatividhi is a volunteer-led movement across India —
+              plantation, water conservation, polythene-free drives, green homes.
             </p>
+
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={JOIN_URL}
@@ -63,23 +102,22 @@ export default function HomeContent() {
               </a>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 rounded-full border border-ink/15 bg-white/60 px-5 py-3 font-semibold text-ink hover:bg-white"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/15 px-5 py-3 font-semibold text-ink hover:bg-ink/5"
               >
                 Learn more <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
             </div>
           </FadeIn>
-
-          <FadeIn direction="right" delay={0.2} duration={0.8}>
-            <AnimatedMadhubaniHero className="mx-auto w-full max-w-md lg:max-w-none" />
-          </FadeIn>
         </div>
       </section>
 
-      {/* Programs */}
-      <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
+      {/* Kolam meter: hero → programs (haldi, the turmeric pulse) */}
+      <KolamMeter color="text-haldi" />
+
+      {/* ───────────────── Programs — Warli decaged, icons breathe on cream ───────────────── */}
+      <section className="mx-auto max-w-7xl px-4 py-14 lg:px-8 lg:py-20">
         <FadeIn>
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <div>
               <h2 className="text-3xl md:text-4xl">What we do</h2>
               <p className="mt-2 text-ink/70">Four pillars that anchor our work on the ground.</p>
@@ -89,20 +127,20 @@ export default function HomeContent() {
             </Link>
           </div>
         </FadeIn>
-        <StaggerChildren className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerChildren className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {programs.map((p) => (
             <motion.div key={p.slug} variants={staggerItem}>
               <Link
                 href={`/programs/${p.slug}`}
-                className="group flex h-full flex-col rounded-2xl border border-ink/10 bg-white/60 p-6 transition-all hover:-translate-y-1 hover:border-vana/40 hover:shadow-lg"
+                className="group flex h-full flex-col border-b border-ink/10 pb-6 transition-colors hover:border-vana/60"
               >
-                <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-vana/10 text-vana transition-colors group-hover:bg-vana/20">
-                  <p.Icon className="h-10 w-10 transition-transform group-hover:scale-110" />
+                <div className="mb-5 h-20 w-20 text-vana transition-transform duration-500 group-hover:-translate-y-1">
+                  <AnimatedWarli Icon={p.Icon} />
                 </div>
                 <h3 className="text-xl text-ink">{p.title}</h3>
                 <p className="mt-2 flex-1 text-sm text-ink/70">{p.blurb}</p>
-                <p className="mt-4 text-sm font-semibold text-vana group-hover:text-vana-dark">
-                  Learn more →
+                <p className="mt-5 text-sm font-semibold text-vana group-hover:text-vana-dark">
+                  Read more →
                 </p>
               </Link>
             </motion.div>
@@ -110,47 +148,58 @@ export default function HomeContent() {
         </StaggerChildren>
       </section>
 
-      {/* Karyavibhag */}
-      <section className="mx-auto max-w-7xl px-4 py-16 lg:px-8">
+      {/* Kolam meter: programs → karyavibhag (terracotta, earth) */}
+      <KolamMeter color="text-terracotta" />
+
+      {/* ───────────────── Karyavibhag — same decaged treatment, indigo accent ───────────────── */}
+      <section className="mx-auto max-w-7xl px-4 py-14 lg:px-8 lg:py-20">
         <FadeIn>
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
             <div>
               <h2 className="text-3xl md:text-4xl">How we&apos;re organised</h2>
               <p className="mt-2 text-ink/70">Seven Karyavibhag — the divisions through which we act.</p>
             </div>
-            <Link href="/karyavibhag" className="text-sm font-semibold text-vana hover:text-vana-dark">
+            <Link href="/karyavibhag" className="text-sm font-semibold text-indigo hover:text-indigo/80">
               All divisions →
             </Link>
           </div>
         </FadeIn>
-        <StaggerChildren className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerChildren className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {karyavibhag.map((k) => (
             <motion.div key={k.slug} variants={staggerItem}>
               <Link
                 href={`/karyavibhag/${k.slug}`}
-                className="group flex h-full flex-col rounded-2xl border border-ink/10 bg-indigo/5 p-6 transition-all hover:-translate-y-0.5 hover:border-indigo/30 hover:bg-indigo/10"
+                className="group flex h-full flex-col border-b border-ink/10 pb-6 transition-colors hover:border-indigo/60"
               >
-                <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-xl bg-indigo/10 text-indigo transition-colors group-hover:bg-indigo/20">
-                  <k.Icon className="h-9 w-9 transition-transform group-hover:scale-110" />
+                <div className="mb-5 h-20 w-20 text-indigo transition-transform duration-500 group-hover:-translate-y-1">
+                  <AnimatedWarli Icon={k.Icon} />
                 </div>
                 <h3 className="text-lg text-indigo">{k.title}</h3>
-                <p className="mt-1 flex-1 text-sm text-ink/70">{k.summary}</p>
+                <p className="mt-2 flex-1 text-sm text-ink/70">{k.summary}</p>
               </Link>
             </motion.div>
           ))}
         </StaggerChildren>
       </section>
 
-      {/* CTA band */}
-      <FadeIn className="mx-auto mt-8 max-w-7xl px-4 lg:px-8">
-        <div className="rounded-3xl bg-vana p-10 text-cream md:p-14">
-          <h2 className="max-w-2xl text-3xl md:text-4xl">
+      {/* Kolam meter: karyavibhag → CTA (vana, forest) */}
+      <KolamMeter color="text-vana" />
+
+      {/* ───────────────── CTA band ───────────────── */}
+      <FadeIn className="mx-auto mt-12 max-w-7xl px-4 pb-20 lg:px-8">
+        <div className="relative overflow-hidden rounded-3xl bg-vana p-10 text-cream md:p-14">
+          {/* Kolam watermark on CTA background */}
+          <KolamDivider
+            className="pointer-events-none absolute -right-8 -top-4 h-20 w-72 text-haldi/20"
+            aria-hidden
+          />
+          <h2 className="relative max-w-2xl text-3xl md:text-4xl">
             Every sapling, every drop, every act — counts.
           </h2>
-          <p className="mt-4 max-w-2xl text-cream/80">
+          <p className="relative mt-4 max-w-2xl text-cream/80">
             Volunteer locally. Contribute skills. Track your pledge on EcoMitram.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="relative mt-6 flex flex-wrap gap-3">
             <a
               href={JOIN_URL}
               target="_blank"

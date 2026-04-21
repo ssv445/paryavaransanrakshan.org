@@ -14,3 +14,4 @@ export { default as WarliYouth } from "./WarliYouth";
 export { default as KolamCorner } from "./KolamCorner";
 export { default as MadhubaniHero } from "./MadhubaniHero";
 export { default as AnimatedMadhubaniHero } from "./AnimatedMadhubaniHero";
+export { default as AnimatedWarli } from "./AnimatedWarli";

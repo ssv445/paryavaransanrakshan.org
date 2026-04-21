@@ -15,15 +15,18 @@ The official website for **Paryavaran Sanrakshan Gatividhi** (पर्याव
 ## Quick start
 
 ```bash
+npm i -g portless      # one-time global install (used by the dev script)
 npm install
-npm run dev            # http://localhost:3000
+npm run dev            # http://psg.localhost:1355
 ```
+
+The `dev` script is `portless psg next dev`. Portless assigns a random free port to Next.js and routes `http://psg.localhost:1355` to it — no port collisions, stable URL across restarts. To bypass, run `PORTLESS=0 npm run dev` (plain `next dev` on `:3000`).
 
 Other scripts:
 
 ```bash
 npm run build          # production build
-npm start              # serve the production build locally
+npm start              # serve the production build locally on :3000
 npm run lint           # ESLint (flat config)
 ```
 

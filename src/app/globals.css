@@ -59,6 +59,24 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+
+  /* Khadi-weave texture — warp+weft threads at 3% opacity.
+     Keeps the cream from reading as flat screen-white. */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--ink) 3%, transparent) 0px,
+      color-mix(in srgb, var(--ink) 3%, transparent) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--ink) 3%, transparent) 0px,
+      color-mix(in srgb, var(--ink) 3%, transparent) 1px,
+      transparent 1px,
+      transparent 3px
+    );
 }
 
 h1, h2, h3, h4 {
