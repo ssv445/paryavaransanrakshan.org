@@ -12,6 +12,7 @@ import {
   MadhubaniHero,
   KolamDivider,
   KolamCorner,
+  GodnaVillage,
 } from "@/components/illustrations";
 
 export const metadata: Metadata = {
@@ -106,10 +107,10 @@ export default function DesignPage() {
       </section>
 
       {/* Folk art heading */}
-      <h2 className="mt-20 font-devanagari text-3xl">तीन लोक-कला परंपराएँ</h2>
+      <h2 className="mt-20 font-devanagari text-3xl">चार लोक-कला परंपराएँ</h2>
       <p className="mt-3 font-devanagari text-lg text-ink/75">
         इस साइट की हर चित्रकारी हाथ से बनाई गई SVG है — कोई स्टॉक नहीं, कोई
-        AI छवि नहीं। तीन परंपराएँ, हर एक अपने साथ कुछ विशेष लेकर आती है।
+        AI छवि नहीं। चार परंपराएँ, हर एक अपने साथ कुछ विशेष लेकर आती है।
       </p>
 
       {/* Warli */}
@@ -189,7 +190,7 @@ export default function DesignPage() {
           <div className="overflow-hidden rounded-2xl bg-indigo p-6 text-haldi">
             <KolamDivider className="mx-auto h-14 w-full" />
             <p className="mt-3 text-center font-devanagari text-xs tracking-wide text-cream/60">
-              फ़ुटर का विभाजक
+              पृष्ठों का विभाजक
             </p>
           </div>
           <div className="flex items-center justify-center gap-8 rounded-2xl border border-ink/10 bg-cream/50 p-8 text-vana dark:bg-white/5">
@@ -197,6 +198,30 @@ export default function DesignPage() {
               <KolamCorner key={i} className="h-16 w-16" />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Godna */}
+      <section className="mt-8 rounded-3xl border border-ink/10 bg-white/60 p-7 md:p-9 dark:bg-white/5">
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">
+          गोदना · झारखंड · बिहार
+        </p>
+        <h3 className="mt-2 font-devanagari text-2xl">क्षितिज पर बसा गाँव</h3>
+        <p className="mt-3 font-devanagari text-base leading-relaxed text-ink/85">
+          गोदना — झारखंड, बिहार और छत्तीसगढ़ की बैगा, संताल, थारू और कुर्मी
+          स्त्रियों की देह-कला। बाँस की सूई और काजल-स्याही से त्वचा पर उकेरे
+          गए ये चिह्न आज कागज़ और दीवारों तक आ पहुँचे हैं। सूर्य, पक्षी,
+          वृक्ष, हाथ पकड़े चलते मनुष्य, तालाब में कमल, धुआँ उठाती झोपड़ी —
+          ये सब एक पतली रेखा में बँधकर एक पूरा गाँव बुन देते हैं। हमारे
+          फ़ुटर में यही गाँव है — क्षितिज पर बसा, आँख भर जाता हुआ। जहाँ हर
+          पृष्ठ का अंत होता है, वहीं से वह जीवन शुरू होता है जिसकी रक्षा के
+          लिए यह अभियान खड़ा है।
+        </p>
+        <div className="mt-8 overflow-hidden rounded-2xl bg-indigo p-6 text-haldi">
+          <GodnaVillage className="block h-32 w-full md:h-40" preserveAspectRatio="xMidYMid meet" />
+          <p className="mt-3 text-center font-devanagari text-xs tracking-wide text-cream/60">
+            फ़ुटर का भित्ति-चित्र
+          </p>
         </div>
       </section>
 

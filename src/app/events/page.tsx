@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 import { events } from "@/lib/content";
+import { GodnaGlyph } from "@/components/illustrations";
 
 export const metadata: Metadata = {
   title: "Events",
@@ -31,9 +32,13 @@ export default function EventsIndex() {
         {items.map(({ event: e, showYear }) => (
           <Fragment key={e.slug}>
             {showYear && (
-              <div className="col-span-full mt-6 flex items-center gap-4 first:mt-0">
+              <div className="col-span-full mt-10 flex items-center gap-4 first:mt-0">
+                <GodnaGlyph
+                  variant="surya"
+                  className="h-7 w-7 shrink-0 text-terracotta"
+                />
                 <h2 className="text-2xl text-indigo">{e.year}</h2>
-                <div className="h-px flex-1 bg-ink/10" aria-hidden />
+                <div className="h-px flex-1 bg-ink/15" aria-hidden />
               </div>
             )}
             <Link

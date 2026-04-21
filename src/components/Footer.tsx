@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { primaryNav, orgContact, JOIN_URL } from "@/lib/nav";
-import KolamDivider from "./illustrations/KolamDivider";
+import GodnaVillage from "./illustrations/GodnaVillage";
 
 function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -39,24 +39,51 @@ function YouTubeIcon(props: React.SVGProps<SVGSVGElement>) {
 export default function Footer() {
   return (
     <footer className="relative mt-24 bg-indigo text-cream">
-      <KolamDivider className="absolute -top-6 left-0 right-0 mx-auto h-12 w-full text-haldi" />
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-16 lg:grid-cols-3 lg:px-8">
-        {/* Brand */}
-        <div className="space-y-4">
-          <Image
-            src="/brand/logo-footer.png"
-            alt="Paryavaran Sanrakshan"
-            width={180}
-            height={64}
-            className="h-14 w-auto brightness-0 invert"
-          />
-          <p className="font-devanagari text-sm leading-relaxed text-cream/80">
-            || माता भूमि: पुत्रों अहम् पृथिव्या: ||
-          </p>
-          <p className="text-sm text-cream/70">
-            An all-India movement dedicated to improving the environment through action and awareness.
-          </p>
-          <div className="flex items-center gap-3 pt-2">
+      {/* Godna village mural — full-bleed folk scene reading left-to-right:
+          sun, breeze, birds, pond, cow, tree of life, happy farmer, hut,
+          crops, walking village figures. Extends to the page edges so the
+          village "runs" across the whole horizon. preserveAspectRatio="none"
+          lets it stretch the scene horizontally on ultra-wide viewports. */}
+      <div className="pt-10 lg:pt-14">
+        <GodnaVillage
+          className="block h-44 w-full text-haldi md:h-56 lg:h-64"
+          preserveAspectRatio="xMidYMid meet"
+        />
+      </div>
+      <div className="mx-auto flex max-w-7xl flex-col gap-10 px-4 pb-16 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-16 lg:px-8">
+        {/* Brand — logo only */}
+        <Image
+          src="/brand/logo-footer.png"
+          alt="Paryavaran Sanrakshan"
+          width={180}
+          height={64}
+          className="h-14 w-auto brightness-0 invert"
+        />
+
+        {/* Right stack: horizontal nav + socials below */}
+        <div className="flex flex-col gap-4 border-t border-cream/10 pt-6 lg:items-end lg:border-0 lg:pt-2">
+          <nav aria-label="Footer">
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm lg:justify-end">
+              {primaryNav.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="text-cream/80 hover:text-haldi">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <a
+                  href={JOIN_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-cream/80 hover:text-haldi"
+                >
+                  Join <ExternalLink className="h-3 w-3" aria-hidden />
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div className="flex items-center gap-3">
             <a href={orgContact.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"
               className="rounded-full border border-cream/20 p-2 hover:bg-cream/10">
               <FacebookIcon className="h-4 w-4" />
@@ -75,91 +102,9 @@ export default function Footer() {
             </a>
           </div>
         </div>
-
-        {/* Explore */}
-        <div>
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-haldi">Explore</h3>
-          <ul className="space-y-2 text-sm">
-            {primaryNav.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="text-cream/80 hover:text-haldi">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-cream/80 hover:text-haldi">
-                Join <ExternalLink className="h-3 w-3" aria-hidden />
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        {/* Connect — social + EcoMitram */}
-        <div>
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-haldi">Connect</h3>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <a
-                href={orgContact.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-cream/80 hover:text-haldi"
-              >
-                Facebook <ExternalLink className="h-3 w-3" aria-hidden />
-              </a>
-            </li>
-            <li>
-              <a
-                href={orgContact.twitter}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-cream/80 hover:text-haldi"
-              >
-                X (Twitter) <ExternalLink className="h-3 w-3" aria-hidden />
-              </a>
-            </li>
-            <li>
-              <a
-                href={orgContact.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-cream/80 hover:text-haldi"
-              >
-                Instagram <ExternalLink className="h-3 w-3" aria-hidden />
-              </a>
-            </li>
-            <li>
-              <a
-                href={orgContact.youtube}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-cream/80 hover:text-haldi"
-              >
-                YouTube <ExternalLink className="h-3 w-3" aria-hidden />
-              </a>
-            </li>
-            <li>
-              <a
-                href={JOIN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-cream/80 hover:text-haldi"
-              >
-                EcoMitram App <ExternalLink className="h-3 w-3" aria-hidden />
-              </a>
-            </li>
-            <li>
-              <Link href="/contact" className="text-cream/80 hover:text-haldi">
-                Contact form
-              </Link>
-            </li>
-          </ul>
-        </div>
       </div>
 
-      <div className="border-t border-cream/10">
+      <div className="relative z-10 border-t border-cream/10 bg-indigo">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-xs text-cream/60 sm:flex-row lg:px-8">
           <p>© {new Date().getFullYear()} Paryavaran Sanrakshan Gatividhi. All rights reserved.</p>
           <p>

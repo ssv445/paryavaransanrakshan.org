@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { GodnaGlyph } from "@/components/illustrations";
 
 export const metadata: Metadata = {
   title: "Our Mission",
@@ -13,7 +14,10 @@ export default function MissionPage() {
       <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-terracotta">
         <Link href="/about" className="hover:underline">About</Link> / Mission
       </p>
-      <h1 className="text-4xl md:text-5xl">Our Mission</h1>
+      <h1 className="flex items-end gap-3 text-4xl md:text-5xl">
+        Our Mission
+        <GodnaGlyph variant="vriksha" className="mb-1 h-7 w-7 text-terracotta md:h-9 md:w-9" />
+      </h1>
 
       <div className="mt-8 space-y-6 text-lg leading-relaxed text-ink/85">
         <p>
@@ -59,7 +63,14 @@ export default function MissionPage() {
       {/* Slide 6 of PSG deck: four guiding principles that shape how the
           movement works. Kept as a bilingual grid so the Hindi stays load-bearing,
           not decorative. */}
-      <h2 className="mt-16 text-3xl">Our Approach</h2>
+      <div className="mt-16" aria-hidden>
+        <GodnaGlyph variant="rule" className="mx-auto h-6 w-full max-w-sm text-ink/55" />
+      </div>
+
+      <h2 className="mt-12 flex items-center gap-3 text-3xl">
+        Our Approach
+        <GodnaGlyph variant="birds" className="h-6 w-6 text-terracotta" />
+      </h2>
       <p className="mt-3 text-lg text-ink/75">
         Four principles guide every campaign and conversation.
       </p>
@@ -95,7 +106,14 @@ export default function MissionPage() {
 
       {/* Slide 7 of PSG deck: the Avoid–Minimize–Conserve model underpinning
           the three expected behavioural changes. */}
-      <h2 className="mt-16 text-3xl">The Change We Seek</h2>
+      <div className="mt-16" aria-hidden>
+        <GodnaGlyph variant="rule" className="mx-auto h-6 w-full max-w-sm text-ink/55" />
+      </div>
+
+      <h2 className="mt-12 flex items-center gap-3 text-3xl">
+        The Change We Seek
+        <GodnaGlyph variant="surya" className="h-6 w-6 text-terracotta" />
+      </h2>
       <p className="mt-3 text-lg text-ink/75">
         अपेक्षित मानस परिवर्तन — Paryavaran Sanrakshan aims to shift three things
         in every household it reaches.
@@ -127,7 +145,13 @@ export default function MissionPage() {
         </p>
       </div>
 
-      <p className="mt-10 text-sm">
+      {/* End-of-article dingbat — pure Godna rule closes the piece. */}
+      <div className="mt-16 flex flex-col items-center gap-4" aria-hidden>
+        <GodnaGlyph variant="vriksha" className="h-8 w-8 text-ink/75" />
+        <GodnaGlyph variant="rule" className="h-5 w-full max-w-xs text-ink/50" />
+      </div>
+
+      <p className="mt-12 text-sm">
         <Link href="/about" className="text-vana underline underline-offset-4 hover:text-vana-dark">
           ← Back to About
         </Link>
