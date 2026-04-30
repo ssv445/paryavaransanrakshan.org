@@ -17,14 +17,19 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 lg:px-8">
         {/* Brand */}
         <Link href="/" className="flex items-center gap-3" aria-label="Paryavaran Sanrakshan — Home">
-          <Image
-            src="/brand/logo.png"
-            alt="Paryavaran Sanrakshan Gatividhi"
-            width={160}
-            height={56}
-            priority
-            className="h-10 w-auto sm:h-12"
-          />
+          {/* Aspect-ratio wrapper anchors the logo to its intrinsic 200×86 ratio.
+              Image fills the box with object-contain so it never stretches even if
+              the source file or Image props drift in the future. */}
+          <span className="block aspect-[200/86] h-10 sm:h-12">
+            <Image
+              src="/brand/logo.png"
+              alt="Paryavaran Sanrakshan Gatividhi"
+              width={200}
+              height={86}
+              priority
+              className="h-full w-full object-contain"
+            />
+          </span>
           <span className="hidden font-devanagari text-sm leading-tight text-vana md:block">
             माता भूमि:<br />पुत्रों अहम् पृथिव्या:
           </span>
@@ -52,7 +57,7 @@ export default function Header() {
             href={JOIN_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-haldi px-4 py-2 text-sm font-semibold text-ink shadow-sm transition-all hover:bg-haldi-dark hover:shadow-md"
+            className="inline-flex items-center gap-1.5 rounded-full bg-haldi px-4 py-2 text-sm font-semibold text-ink-fixed shadow-sm transition-all hover:bg-haldi-dark hover:shadow-md"
           >
             Join <ExternalLink className="h-3.5 w-3.5" aria-hidden />
           </a>
@@ -95,7 +100,7 @@ export default function Header() {
               href={JOIN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full bg-haldi px-4 py-2 text-sm font-semibold text-ink"
+              className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-full bg-haldi px-4 py-2 text-sm font-semibold text-ink-fixed"
             >
               Join <ExternalLink className="h-3.5 w-3.5" aria-hidden />
             </a>

@@ -29,7 +29,7 @@ export default function ResourcesHub() {
             href={r.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-2xl border border-ink/10 bg-white/60 p-6 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
+            className="group rounded-2xl border border-ink/10 bg-white/60 p-6 transition-all dark:bg-white/5 hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
           >
             <h2 className="flex items-center gap-2 text-xl text-ink">
               {r.label} <ExternalLink className="h-4 w-4 text-muted" aria-hidden />

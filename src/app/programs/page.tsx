@@ -31,7 +31,7 @@ export default function ProgramsHub() {
             <Link
               key={p.slug}
               href={`/programs/${p.slug}`}
-              className="group rounded-2xl border border-ink/10 bg-white/60 p-6 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
+              className="group rounded-2xl border border-ink/10 bg-white/60 p-6 transition-all dark:bg-white/5 hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
             >
               {Icon && (
                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-vana/10 text-vana group-hover:bg-vana/20">

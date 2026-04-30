@@ -96,7 +96,7 @@ export default function MissionPage() {
         ].map((p) => (
           <div
             key={p.hi}
-            className="rounded-2xl border border-ink/10 bg-white/60 p-5"
+            className="rounded-2xl border border-ink/10 bg-white/60 p-5 dark:bg-white/5"
           >
             <p className="font-devanagari text-xl text-vana">{p.hi}</p>
             <p className="mt-2 text-base text-ink/80">{p.en}</p>

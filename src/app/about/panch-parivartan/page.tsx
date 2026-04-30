@@ -60,7 +60,7 @@ export default function PanchParivartanPage() {
         {pillars.map((p) => (
           <div
             key={p.number}
-            className="flex gap-5 rounded-2xl border border-ink/10 bg-white/60 p-5"
+            className="flex gap-5 rounded-2xl border border-ink/10 bg-white/60 p-5 dark:bg-white/5"
           >
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-vana/10 font-display text-lg text-vana">
               {p.number}

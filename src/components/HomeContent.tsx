@@ -96,7 +96,7 @@ export default function HomeContent() {
                 href={JOIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-haldi px-5 py-3 font-semibold text-ink shadow-sm transition-all hover:bg-haldi-dark hover:shadow-md"
+                className="inline-flex items-center gap-2 rounded-full bg-haldi px-5 py-3 font-semibold text-ink-fixed shadow-sm transition-all hover:bg-haldi-dark hover:shadow-md"
               >
                 Join the movement <ExternalLink className="h-4 w-4" aria-hidden />
               </a>
@@ -127,7 +127,7 @@ export default function HomeContent() {
             </Link>
           </div>
         </FadeIn>
-        <StaggerChildren className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerChildren className="grid grid-cols-2 gap-x-5 gap-y-10 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-4">
           {programs.map((p) => (
             <motion.div key={p.slug} variants={staggerItem}>
               <Link
@@ -164,7 +164,7 @@ export default function HomeContent() {
             </Link>
           </div>
         </FadeIn>
-        <StaggerChildren className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+        <StaggerChildren className="grid grid-cols-2 gap-x-5 gap-y-10 sm:gap-x-8 sm:gap-y-12 lg:grid-cols-4">
           {karyavibhag.map((k) => (
             <motion.div key={k.slug} variants={staggerItem}>
               <Link
@@ -204,7 +204,7 @@ export default function HomeContent() {
               href={JOIN_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-haldi px-5 py-3 font-semibold text-ink hover:bg-haldi-dark"
+              className="inline-flex items-center gap-2 rounded-full bg-haldi px-5 py-3 font-semibold text-ink-fixed hover:bg-haldi-dark"
             >
               Get started on EcoMitram <ExternalLink className="h-4 w-4" aria-hidden />
             </a>

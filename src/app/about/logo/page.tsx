@@ -19,8 +19,8 @@ export default function LogoPage() {
         <Image
           src="/brand/logo.png"
           alt="Paryavaran Sanrakshan Gatividhi logo"
-          width={320}
-          height={120}
+          width={200}
+          height={86}
           className="h-auto w-full max-w-xs"
           priority
         />

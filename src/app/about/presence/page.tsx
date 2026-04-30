@@ -39,7 +39,7 @@ export default function PresencePage() {
         {regions.map((r) => (
           <div
             key={r.name}
-            className="rounded-2xl border border-ink/10 bg-white/60 p-5"
+            className="rounded-2xl border border-ink/10 bg-white/60 p-5 dark:bg-white/5"
           >
             <h2 className="text-lg font-semibold text-vana">{r.name}</h2>
             <p className="mt-2 text-sm text-ink/70">{r.states}</p>
