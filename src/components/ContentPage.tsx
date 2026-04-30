@@ -65,7 +65,7 @@ export default function ContentPage({ entry, backHref, backLabel, breadcrumb, he
               {entry.focusAreas.map((f, i) => (
                 <div
                   key={i}
-                  className="rounded-xl border border-ink/10 bg-white/60 px-4 py-3 text-base text-ink/80"
+                  className="rounded-xl border border-ink/10 bg-white/60 px-4 py-3 text-base text-ink/85 dark:bg-white/5 dark:border-cream-fixed/10"
                 >
                   {f}
                 </div>

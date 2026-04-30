@@ -28,7 +28,7 @@ export default function AboutHub() {
           <Link
             key={s.href}
             href={s.href}
-            className="rounded-2xl border border-ink/10 bg-white/60 p-6 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
+            className="rounded-2xl border border-ink/10 bg-white/60 p-6 transition-all dark:bg-white/5 hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
           >
             <h2 className="text-xl text-ink">{s.title}</h2>
             <p className="mt-1 text-sm text-ink/70">{s.blurb}</p>

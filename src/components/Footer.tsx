@@ -38,7 +38,7 @@ function YouTubeIcon(props: React.SVGProps<SVGSVGElement>) {
 
 export default function Footer() {
   return (
-    <footer className="relative mt-24 bg-indigo text-cream">
+    <footer className="relative mt-24 bg-indigo-deep text-cream-fixed">
       {/* Godna village mural — full-bleed folk scene reading left-to-right:
           sun, breeze, birds, pond, cow, tree of life, happy farmer, hut,
           crops, walking village figures. Extends to the page edges so the
@@ -52,21 +52,26 @@ export default function Footer() {
       </div>
       <div className="mx-auto flex max-w-7xl flex-col gap-10 px-4 pb-16 pt-6 lg:flex-row lg:items-start lg:justify-between lg:gap-16 lg:px-8">
         {/* Brand — logo only */}
-        <Image
-          src="/brand/logo-footer.png"
-          alt="Paryavaran Sanrakshan"
-          width={180}
-          height={64}
-          className="h-14 w-auto brightness-0 invert"
-        />
+        {/* Aspect-ratio wrapper anchors the logo to its intrinsic 165×71 ratio.
+            Image fills the box with object-contain so it never stretches even if
+            the source file or Image props drift in the future. */}
+        <span className="block aspect-[165/71] h-14">
+          <Image
+            src="/brand/logo-footer.png"
+            alt="Paryavaran Sanrakshan"
+            width={165}
+            height={71}
+            className="h-full w-full object-contain brightness-0 invert"
+          />
+        </span>
 
         {/* Right stack: horizontal nav + socials below */}
-        <div className="flex flex-col gap-4 border-t border-cream/10 pt-6 lg:items-end lg:border-0 lg:pt-2">
+        <div className="flex flex-col gap-4 border-t border-cream-fixed/10 pt-6 lg:items-end lg:border-0 lg:pt-2">
           <nav aria-label="Footer">
             <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm lg:justify-end">
               {primaryNav.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="text-cream/80 hover:text-haldi">
+                  <Link href={item.href} className="text-cream-fixed/80 hover:text-haldi">
                     {item.label}
                   </Link>
                 </li>
@@ -76,7 +81,7 @@ export default function Footer() {
                   href={JOIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-cream/80 hover:text-haldi"
+                  className="inline-flex items-center gap-1 text-cream-fixed/80 hover:text-haldi"
                 >
                   Join <ExternalLink className="h-3 w-3" aria-hidden />
                 </a>
@@ -85,27 +90,27 @@ export default function Footer() {
           </nav>
           <div className="flex items-center gap-3">
             <a href={orgContact.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-              className="rounded-full border border-cream/20 p-2 hover:bg-cream/10">
+              className="rounded-full border border-cream-fixed/20 p-2 hover:bg-cream-fixed/10">
               <FacebookIcon className="h-4 w-4" />
             </a>
             <a href={orgContact.twitter} target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"
-              className="rounded-full border border-cream/20 p-2 hover:bg-cream/10">
+              className="rounded-full border border-cream-fixed/20 p-2 hover:bg-cream-fixed/10">
               <TwitterIcon className="h-4 w-4" />
             </a>
             <a href={orgContact.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-              className="rounded-full border border-cream/20 p-2 hover:bg-cream/10">
+              className="rounded-full border border-cream-fixed/20 p-2 hover:bg-cream-fixed/10">
               <InstagramIcon className="h-4 w-4" />
             </a>
             <a href={orgContact.youtube} target="_blank" rel="noopener noreferrer" aria-label="YouTube"
-              className="rounded-full border border-cream/20 p-2 hover:bg-cream/10">
+              className="rounded-full border border-cream-fixed/20 p-2 hover:bg-cream-fixed/10">
               <YouTubeIcon className="h-4 w-4" />
             </a>
           </div>
         </div>
       </div>
 
-      <div className="relative z-10 border-t border-cream/10 bg-indigo">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-xs text-cream/60 sm:flex-row lg:px-8">
+      <div className="relative z-10 border-t border-cream-fixed/10 bg-indigo-deep">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-6 text-xs text-cream-fixed/60 sm:flex-row lg:px-8">
           <p>© {new Date().getFullYear()} Paryavaran Sanrakshan Gatividhi. All rights reserved.</p>
           <p>
             Made with care for Mother Earth.{" "}

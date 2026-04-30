@@ -30,7 +30,7 @@ export default function StoriesIndex() {
             <Link
               key={s.slug}
               href={`/stories/${s.slug}`}
-              className="group overflow-hidden rounded-2xl border border-ink/10 bg-white/60 transition-all hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
+              className="group overflow-hidden rounded-2xl border border-ink/10 bg-white/60 transition-all dark:bg-white/5 hover:-translate-y-0.5 hover:border-vana/40 hover:shadow-md"
             >
               {s.images?.[0] && (
                 <div className="aspect-[16/9] overflow-hidden bg-cream">

@@ -45,7 +45,7 @@ export default function ContactForm() {
           name="message"
           required
           rows={6}
-          className="w-full rounded-xl border border-ink/15 bg-white/70 px-4 py-3 text-ink outline-none transition-colors focus:border-vana focus:ring-2 focus:ring-vana/20"
+          className="w-full rounded-xl border border-ink/15 bg-white/70 px-4 py-3 text-ink outline-none transition-colors focus:border-vana focus:ring-2 focus:ring-vana/20 dark:bg-white/5"
         />
       </label>
       {/* honeypot */}
@@ -100,7 +100,7 @@ function Field({
         name={name}
         type={type}
         required={required}
-        className="w-full rounded-xl border border-ink/15 bg-white/70 px-4 py-3 text-ink outline-none transition-colors focus:border-vana focus:ring-2 focus:ring-vana/20"
+        className="w-full rounded-xl border border-ink/15 bg-white/70 px-4 py-3 text-ink outline-none transition-colors focus:border-vana focus:ring-2 focus:ring-vana/20 dark:bg-white/5"
       />
     </label>
   );

@@ -14,6 +14,13 @@
   --terracotta: #b8442f;
   --muted: #8c7b63;
 
+  /* Non-swapping anchors. Used where a swap would invert intent —
+     e.g. dark text on the haldi CTA button (always dark) or cream text
+     on the deep indigo footer (always light). */
+  --ink-fixed: #1a1a1a;
+  --cream-fixed: #faf3e3;
+  --indigo-deep: #2e4057;
+
   --background: var(--cream);
   --foreground: var(--ink);
 }
@@ -26,9 +33,13 @@
   --vana-dark: #7fc091;
   --indigo: #8ea8c3;
   --haldi: #e8b923;
-  --haldi-dark: #f0cb4e;
+  --haldi-dark: #c69a10;
   --terracotta: #d9715d;
   --muted: #a89b85;
+
+  /* Anchors: ink/cream stay literal; indigo-deep darkens further so the
+     footer reads as a deep night surface instead of a washed light-blue. */
+  --indigo-deep: #16202c;
 
   --background: #121015;
   --foreground: #ede6d6;
@@ -46,6 +57,9 @@
   --color-haldi-dark: var(--haldi-dark);
   --color-terracotta: var(--terracotta);
   --color-muted: var(--muted);
+  --color-ink-fixed: var(--ink-fixed);
+  --color-cream-fixed: var(--cream-fixed);
+  --color-indigo-deep: var(--indigo-deep);
 
   --font-sans: var(--font-plex-sans);
   --font-display: var(--font-yatra);
