@@ -3,6 +3,7 @@ title: Beejaropan se Vriksharopan Abhiyan
 titleHi: बीजारोपण से वृक्षारोपण अभियान
 date: '5 June 2026'
 year: 2026
+featured: true
 images:
   - /images/events/beejaropan-se-vriksharopan-abhiyan/01.jpeg
   - /images/events/beejaropan-se-vriksharopan-abhiyan/02.jpeg

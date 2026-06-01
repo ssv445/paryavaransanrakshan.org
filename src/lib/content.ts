@@ -25,6 +25,7 @@ export type Entry = {
 export type EventEntry = Entry & {
   date: string;
   year: number;
+  featured?: boolean;
   images?: string[];
   downloads?: {
     label: string;

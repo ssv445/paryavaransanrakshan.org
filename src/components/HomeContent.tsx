@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, ExternalLink } from "lucide-react";
+import type { EventEntry } from "@/lib/content";
 import { JOIN_URL } from "@/lib/nav";
 import { FadeIn, StaggerChildren, staggerItem } from "@/components/motion";
 import {
@@ -42,7 +44,11 @@ function KolamMeter({ color = "text-haldi" }: { color?: string }) {
   );
 }
 
-export default function HomeContent() {
+type HomeContentProps = {
+  featuredActivities: EventEntry[];
+};
+
+export default function HomeContent({ featuredActivities }: HomeContentProps) {
   return (
     <>
       {/* ───────────────── Hero — broken, Madhubani bleeds off-canvas ───────────────── */}
@@ -147,6 +153,98 @@ export default function HomeContent() {
           ))}
         </StaggerChildren>
       </section>
+
+      {featuredActivities.length > 0 && (
+        <>
+          {/* Kolam meter: programs → featured activities (vana, new growth) */}
+          <KolamMeter color="text-vana" />
+
+          <section className="border-y border-haldi/30 bg-haldi/15 py-14 lg:py-20">
+            <div className="mx-auto max-w-7xl px-4 lg:px-8">
+              <FadeIn>
+                <div className="mb-12 flex flex-wrap items-end justify-between gap-4">
+                  <div>
+                    <p className="mb-3 text-xs font-semibold uppercase tracking-[0.24em] text-terracotta">
+                      Highlighted now
+                    </p>
+                    <h2 className="text-3xl md:text-4xl">Featured activities</h2>
+                    <p className="mt-2 text-ink/70">Current campaigns and activities to join or share.</p>
+                  </div>
+                  <Link href="/events" className="text-sm font-semibold text-vana hover:text-vana-dark">
+                    All events →
+                  </Link>
+                </div>
+              </FadeIn>
+
+              <StaggerChildren
+                className={`grid gap-5 ${featuredActivities.length > 1 ? "md:grid-cols-2" : ""}`}
+              >
+                {featuredActivities.map((activity) => (
+                  <motion.div key={activity.slug} variants={staggerItem}>
+                    <Link
+                      href={`/events/${activity.slug}`}
+                      className={`group grid h-full overflow-hidden rounded-2xl border border-haldi/50 bg-cream shadow-sm transition-all hover:-translate-y-0.5 hover:border-vana/45 hover:shadow-md dark:bg-white/10 ${
+                        featuredActivities.length === 1 ? "md:grid-cols-[1.1fr_1fr]" : "md:grid-cols-[0.9fr_1fr]"
+                      }`}
+                    >
+                      {activity.images?.[0] && (
+                        <div
+                          className={`overflow-hidden bg-cream ${
+                            featuredActivities.length === 1 ? "aspect-[16/9] md:aspect-auto" : "aspect-[16/10] md:aspect-auto"
+                          }`}
+                        >
+                          <Image
+                            src={activity.images[0]}
+                            alt={activity.title}
+                            width={750}
+                            height={469}
+                            className="h-full w-full object-cover transition-transform group-hover:scale-[1.02]"
+                          />
+                        </div>
+                      )}
+                      <div className={featuredActivities.length === 1 ? "p-6 md:p-8 lg:p-10" : "p-5"}>
+                        <p className="text-xs font-medium text-muted">{activity.date}</p>
+                        <h3
+                          className={
+                            featuredActivities.length === 1
+                              ? "mt-2 text-2xl text-ink md:text-3xl"
+                              : "mt-2 text-xl text-ink"
+                          }
+                        >
+                          {activity.title}
+                        </h3>
+                        {activity.titleHi && (
+                          <p
+                            className={
+                              featuredActivities.length === 1
+                                ? "mt-2 font-devanagari text-lg text-vana md:text-xl"
+                                : "mt-1 font-devanagari text-base text-vana"
+                            }
+                          >
+                            {activity.titleHi}
+                          </p>
+                        )}
+                        <p
+                          className={
+                            featuredActivities.length === 1
+                              ? "mt-5 max-w-xl text-base leading-relaxed text-ink/70 md:text-lg"
+                              : "mt-3 text-sm leading-relaxed text-ink/70"
+                          }
+                        >
+                          {activity.summary}
+                        </p>
+                        <p className="mt-5 text-sm font-semibold text-vana group-hover:text-vana-dark">
+                          View activity →
+                        </p>
+                      </div>
+                    </Link>
+                  </motion.div>
+                ))}
+              </StaggerChildren>
+            </div>
+          </section>
+        </>
+      )}
 
       {/* Kolam meter: programs → karyavibhag (terracotta, earth) */}
       <KolamMeter color="text-terracotta" />
