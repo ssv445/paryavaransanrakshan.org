@@ -26,6 +26,11 @@ export type EventEntry = Entry & {
   date: string;
   year: number;
   images?: string[];
+  downloads?: {
+    label: string;
+    href: string;
+    description?: string;
+  }[];
 };
 
 export type StoryEntry = Entry & {
