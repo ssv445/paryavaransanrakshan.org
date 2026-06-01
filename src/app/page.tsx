@@ -1,5 +1,8 @@
 import HomeContent from "@/components/HomeContent";
+import { events } from "@/lib/content";
 
 export default function Home() {
-  return <HomeContent />;
+  const featuredActivities = events.filter((event) => event.featured);
+
+  return <HomeContent featuredActivities={featuredActivities} />;
 }
