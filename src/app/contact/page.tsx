@@ -40,7 +40,7 @@ export default function ContactPage() {
               Sign up on the EcoMitram app to join campaigns and track your pledges.
             </p>
             <a
-              href="https://ecomitram.app/"
+              href="https://ecomitram.org/"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-3 inline-block text-sm font-semibold text-vana hover:text-vana-dark"

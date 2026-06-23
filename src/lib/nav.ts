@@ -13,13 +13,13 @@ export const primaryNav: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-export const JOIN_URL = "https://ecomitram.app/";
+export const JOIN_URL = "https://ecomitram.org/";
 
 // Retired external resources: paryavaranperspective.com (E-Magazine),
 // paryavaranbharat.org (Media Center), sankalp.paryavaransanrakshan.org
 // (Sankalp Portal). Removed 2026-04 — sites no longer maintained.
 export const resources: NavItem[] = [
-  { label: "EcoMitram App", href: "https://ecomitram.app/", external: true },
+  { label: "EcoMitram App", href: "https://ecomitram.org/", external: true },
 ];
 
 export const orgContact = {

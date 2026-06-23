@@ -90,5 +90,5 @@ Push to the main branch; Vercel builds automatically. No `output: 'export'` — 
 
 ## Links
 
-- EcoMitram (volunteer portal, "Join" CTA): https://ecomitram.app/
+- EcoMitram (volunteer portal, "Join" CTA): https://ecomitram.org/
 - Contact: [email protected] · +91 8369-837-609
