@@ -16,7 +16,7 @@ A Next.js static website for **Paryavaran Sanrakshan Gatividhi** (पर्य�
 We do NOT implement Next.js i18n routing. Instead, **Google's native Translate widget** (`translate.google.com/translate_a/element.js`) handles translation client-side. It runs with `multilanguagePage: true` so Hindi-native sections (marked `lang="hi"`) translate correctly even when the visitor picks English. Loaded in `src/components/GTranslate.tsx` via `next/script`. All route slugs are English.
 
 ### No Join form — redirect to EcoMitram
-The "Join" CTA throughout the site is an **external link** to `https://ecomitram.app/` (`JOIN_URL` in `src/lib/nav.ts`). There is no `/join` route — it 301-redirects to EcoMitram in `next.config.ts`. The only form on the site is `/contact`.
+The "Join" CTA throughout the site is an **external link** to `https://ecomitram.org/` (`JOIN_URL` in `src/lib/nav.ts`). There is no `/join` route — it 301-redirects to EcoMitram in `next.config.ts`. The only form on the site is `/contact`.
 
 ### Content model — Markdown files with frontmatter
 Content lives as `.md` files in `/content/<kind>/` (kinds: `events`, `karyavibhag`, `programs`, `stories`). `src/lib/content.ts` reads them at build time with `gray-matter` — frontmatter carries structured fields (title, date, type, etc.); body becomes the `intro` prose. To add content: drop a new `.md` file in the right folder. Typed as `Entry`, `EventEntry`, `StoryEntry`.
@@ -86,7 +86,7 @@ Toggled via `ThemeToggle` component (moon/sun icon in header). Uses `.dark` clas
 
 ### Primary navigation
 ```
-[Logo + mantra]  About  Programs  Karyavibhag  Events  Stories  Contact  [GTranslate]  [Theme]  [ Join → ecomitram.app ]
+[Logo + mantra]  About  Programs  Karyavibhag  Events  Stories  Contact  [GTranslate]  [Theme]  [ Join → ecomitram.org ]
 ```
 
 ## URL Redirects (SEO preservation)
@@ -97,7 +97,7 @@ All legacy WordPress URLs are 301-redirected in `next.config.ts`:
 - WP date-slug URLs (`/2024/02/28/plantation/`) → `/programs/*` or `/karyavibhag/*`
 - Event root-slug URLs (`/eco-bricks/`, `/jal-samwad/`) → `/events/*`
 - `/feeds`, `/gallery`, `/success-stories`, `/latest-news` → `/stories`
-- `/join` → `https://ecomitram.app/` (external)
+- `/join` → `https://ecomitram.org/` (external)
 
 ## Environment Variables (Vercel)
 
@@ -132,7 +132,7 @@ npm start          # Serve production build locally (port 3000)
 
 | Service | URL | Purpose |
 |---|---|---|
-| EcoMitram App | https://ecomitram.app/ | Join/volunteer portal (primary CTA) |
+| EcoMitram App | https://ecomitram.org/ | Join/volunteer portal (primary CTA) |
 
 Retired 2026-04 (no longer maintained, do not re-add): paryavaranperspective.com (E-Magazine), paryavaranbharat.org (Media Center), sankalp.paryavaransanrakshan.org (Sankalp Portal). See comment in `src/lib/nav.ts`.
 

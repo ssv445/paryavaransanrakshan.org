@@ -82,8 +82,8 @@ const legacyRedirects: { source: string; destination: string; permanent: true }[
   { source: "/2024/02/22/latest/", destination: "/stories", permanent: true },
 
   // Join → EcoMitram (external)
-  { source: "/join", destination: "https://ecomitram.app/", permanent: true },
-  { source: "/join/", destination: "https://ecomitram.app/", permanent: true },
+  { source: "/join", destination: "https://ecomitram.org/", permanent: true },
+  { source: "/join/", destination: "https://ecomitram.org/", permanent: true },
 
   // Design page — moved under /about
   { source: "/colophon", destination: "/about/design", permanent: true },
