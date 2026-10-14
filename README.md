@@ -10,7 +10,7 @@ The official website for **Paryavaran Sanrakshan Gatividhi** (पर्याव
 - Contact form: [Resend](https://resend.com) (`src/app/api/contact/route.ts`)
 - Translation: Google's native Translate widget (client-side, 12 Indian languages)
 - Sitemap/robots: `next-sitemap` + `src/app/sitemap.ts` + `src/app/robots.ts`
-- Hosted on [Vercel](https://vercel.com)
+- Static export on Cloudflare Workers Static Assets (see `docs/hosting.md`)
 
 ## Quick start
 
@@ -32,15 +32,7 @@ npm run lint           # ESLint (flat config)
 
 ## Environment variables
 
-Only the contact form needs env vars. Create `.env.local`:
-
-| Variable | Required | Default | Purpose |
-|---|---|---|---|
-| `RESEND_API_KEY` | Production | — | Send contact form emails via Resend |
-| `CONTACT_TO_EMAIL` | No | `[email protected]` | Recipient |
-| `CONTACT_FROM_EMAIL` | No | `Paryavaran Sanrakshan <noreply@…>` | Sender (must be a verified Resend domain) |
-
-Without `RESEND_API_KEY`, the contact endpoint logs submissions to the console instead of sending — safe for dev/preview.
+None. The site is a static export; the contact page links to `mailto:`.
 
 ## Project layout
 
@@ -53,7 +45,7 @@ src/
   lib/
     content.ts        Reads /content/** at build time via gray-matter
     nav.ts            Primary nav, Join URL, org contact/socials
-next.config.ts        Legacy WordPress → new IA 301 redirects
+public/_redirects     Legacy WordPress → new IA redirects (308)
 ```
 
 ### Adding content
@@ -71,7 +63,7 @@ Frontmatter fields are typed in `src/lib/content.ts` (`Entry`, `EventEntry`, `St
 
 ### URL redirects
 
-All legacy WordPress URLs (date-slug permalinks, old section paths, `/feeds`, `/gallery`, `/success-stories`, `/latest-news`, `/join`, etc.) are 301-redirected in `next.config.ts`. When renaming routes, add a redirect there.
+All legacy WordPress URLs (date-slug permalinks, old section paths, `/feeds`, `/gallery`, `/success-stories`, `/latest-news`, `/join`, etc.) are 308-redirected in `public/_redirects`. When renaming routes, add a redirect there.
 
 ## Design system
 
@@ -86,7 +78,7 @@ Indian folk-art visual language — see `/about/design` (the colophon page) for 
 
 ## Deployment
 
-Push to the main branch; Vercel builds automatically. No `output: 'export'` — we want `next/image` optimization and the `/api/contact` route handler. Set the env vars above in the Vercel dashboard.
+Push to main; GitHub Actions builds the static export and runs `wrangler deploy` (see `docs/hosting.md`).
 
 ## Links
 

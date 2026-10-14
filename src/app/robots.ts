@@ -6,3 +6,6 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: "https://paryavaransanrakshan.org/sitemap.xml",
   };
 }
+
+// Required by `output: "export"`: emit this file once at build time.
+export const dynamic = "force-static";

@@ -8,21 +8,21 @@ A Next.js static website for **Paryavaran Sanrakshan Gatividhi** (पर्य�
 
 ### Stack
 - **Next.js 16** (App Router) + **React 19** + **TypeScript** + **Tailwind CSS 4** + **Framer Motion**
-- Hosted on **Vercel** (default SSG build — not `output: 'export'`, so we keep `next/image` optimization and API routes)
-- Contact form backend: **Resend** via `src/app/api/contact/route.ts`
+- Static export (`output: 'export'`) served by Cloudflare Workers Static Assets, see `docs/hosting.md`. No server, no API routes, no image optimization.
+- Contact page: a `mailto:` button (`src/components/ContactMailto.tsx`), no form backend
 - Sitemap: `next-sitemap` + `src/app/sitemap.ts` + `src/app/robots.ts`
 
 ### No multi-language i18n
 We do NOT implement Next.js i18n routing. Instead, **Google's native Translate widget** (`translate.google.com/translate_a/element.js`) handles translation client-side. It runs with `multilanguagePage: true` so Hindi-native sections (marked `lang="hi"`) translate correctly even when the visitor picks English. Loaded in `src/components/GTranslate.tsx` via `next/script`. All route slugs are English.
 
 ### No Join form — redirect to EcoMitram
-The "Join" CTA throughout the site is an **external link** to `https://ecomitram.org/` (`JOIN_URL` in `src/lib/nav.ts`). There is no `/join` route — it 301-redirects to EcoMitram in `next.config.ts`. The only form on the site is `/contact`.
+The "Join" CTA throughout the site is an **external link** to `https://ecomitram.org/` (`JOIN_URL` in `src/lib/nav.ts`). There is no `/join` route — it redirects (308) to EcoMitram in `public/_redirects`. The only form on the site is `/contact`.
 
 ### Content model — Markdown files with frontmatter
 Content lives as `.md` files in `/content/<kind>/` (kinds: `events`, `karyavibhag`, `programs`, `stories`). `src/lib/content.ts` reads them at build time with `gray-matter` — frontmatter carries structured fields (title, date, type, etc.); body becomes the `intro` prose. To add content: drop a new `.md` file in the right folder. Typed as `Entry`, `EventEntry`, `StoryEntry`.
 
 ### Stories = unified content hub
-News, Gallery, Feeds, and Success Stories from the old WP site are **merged into a single `/stories` section**. Each story has a `type` field: `impact`, `dispatch`, or `photo-essay`. The old `/feeds`, `/gallery`, `/success-stories`, `/latest-news` URLs all 301-redirect to `/stories`.
+News, Gallery, Feeds, and Success Stories from the old WP site are **merged into a single `/stories` section**. Each story has a `type` field: `impact`, `dispatch`, or `photo-essay`. The old `/feeds`, `/gallery`, `/success-stories`, `/latest-news` URLs all 308-redirect to `/stories`.
 
 ## Design System
 
@@ -91,7 +91,7 @@ Toggled via `ThemeToggle` component (moon/sun icon in header). Uses `.dark` clas
 
 ## URL Redirects (SEO preservation)
 
-All legacy WordPress URLs are 301-redirected in `next.config.ts`:
+All legacy WordPress URLs are 308-redirected in `public/_redirects`:
 - `/about-us` → `/about`
 - `/mission`, `/our-story`, `/our-logo`, `/our-presence` → `/about/*`
 - WP date-slug URLs (`/2024/02/28/plantation/`) → `/programs/*` or `/karyavibhag/*`
@@ -99,15 +99,9 @@ All legacy WordPress URLs are 301-redirected in `next.config.ts`:
 - `/feeds`, `/gallery`, `/success-stories`, `/latest-news` → `/stories`
 - `/join` → `https://ecomitram.org/` (external)
 
-## Environment Variables (Vercel)
+## Environment Variables
 
-| Variable | Required | Default | Purpose |
-|---|---|---|---|
-| `RESEND_API_KEY` | For prod | — | Sends contact form emails |
-| `CONTACT_TO_EMAIL` | No | `[email protected]` | Recipient of contact form |
-| `CONTACT_FROM_EMAIL` | No | `Paryavaran Sanrakshan <noreply@...>` | Sender (must be verified domain in Resend) |
-
-Without `RESEND_API_KEY`, the contact form logs submissions to console (safe for dev/preview).
+None. The site is a static export with no server code.
 
 ## Key Commands
 

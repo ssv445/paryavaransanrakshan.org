@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // paryavaransanrakshan.org is a static export (`output: "export"` -> out/).
+  // This Worker has no script: Cloudflare serves the files straight from
+  // Workers Static Assets, which is free and unmetered. The same out/ folder
+  // runs on any static host, see docs/hosting.md for leaving Cloudflare.
+  "name": "paryavaran",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    // /about/mission -> about/mission.html, matching Next's export layout.
+    "html_handling": "auto-trailing-slash",
+    // Unknown paths get out/404.html with a real 404 status.
+    "not_found_handling": "404-page"
+  },
+  // Served only on the apex, which is the canonical host today
+  // (www.paryavaransanrakshan.org answers 308 -> apex). The www redirect is
+  // not part of this Worker. workers.dev stays off so Google doesn't index a
+  // duplicate copy of the site.
+  "routes": [{ "pattern": "paryavaransanrakshan.org", "custom_domain": true }],
+  "workers_dev": false,
+  "preview_urls": false
+}
