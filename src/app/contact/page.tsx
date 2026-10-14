@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Phone, Mail } from "lucide-react";
-import ContactForm from "@/components/ContactForm";
+import ContactMailto from "@/components/ContactMailto";
 import { orgContact } from "@/lib/nav";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Reach Paryavaran Sanrakshan Gatividhi — phone, email, or message.",
+  description: "Reach Paryavaran Sanrakshan Gatividhi — phone or email.",
 };
 
 export default function ContactPage() {
@@ -51,7 +51,7 @@ export default function ContactPage() {
         </aside>
 
         <div className="rounded-3xl border border-ink/10 bg-white/70 p-6 md:p-8 dark:bg-white/5">
-          <ContactForm />
+          <ContactMailto />
         </div>
       </div>
     </section>

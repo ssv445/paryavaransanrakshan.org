@@ -1,0 +1,8 @@
+# Static-host response headers (Cloudflare Workers Static Assets / Netlify
+# format). A static export can't run next.config.ts headers(), so cache rules
+# live here. There are no extensionless generated images on this site (icons
+# are static files), so no Content-Type overrides are needed.
+
+# Hashed build files never change.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable

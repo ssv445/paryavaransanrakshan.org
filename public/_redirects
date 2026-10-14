@@ -1,0 +1,89 @@
+# Static-host redirects (Cloudflare Workers Static Assets / Netlify format).
+# These replaced next.config.ts redirects(), which a static export can't run.
+# 308 = permanent, same SEO semantics as the 301s of the legacy WordPress
+# URL structure (what Next served before). Both the bare and trailing-slash
+# forms are listed, as before.
+
+# About
+/about-us /about 308
+/about-us/ /about 308
+/mission /about/mission 308
+/mission/ /about/mission 308
+/our-story /about/story 308
+/our-story/ /about/story 308
+/our-logo /about/logo 308
+/our-logo/ /about/logo 308
+/our-presence /about/presence 308
+/our-presence/ /about/presence 308
+
+# Programs (WP date-slug URLs)
+/2024/02/28/plantation /programs/plantation 308
+/2024/02/28/plantation/ /programs/plantation 308
+/2024/02/28/harit-ghar /programs/harit-ghar 308
+/2024/02/28/harit-ghar/ /programs/harit-ghar 308
+/2024/02/28/save-water /programs/save-water 308
+/2024/02/28/save-water/ /programs/save-water 308
+/2024/02/28/waste-management-aayam /programs/polythene-free 308
+/2024/02/28/waste-management-aayam/ /programs/polythene-free 308
+
+# Karyavibhag
+/2024/02/23/religious-institutes-karyavibhag /karyavibhag/religious-institutes 308
+/2024/02/23/religious-institutes-karyavibhag/ /karyavibhag/religious-institutes 308
+/2024/02/23/nari-shakti-karya-vibhag /karyavibhag/nari-shakti 308
+/2024/02/23/nari-shakti-karya-vibhag/ /karyavibhag/nari-shakti 308
+/2024/02/23/ngo-karya-vibhag /karyavibhag/samajik-sansthan 308
+/2024/02/23/ngo-karya-vibhag/ /karyavibhag/samajik-sansthan 308
+/karyavibhag/ngo-coordination /karyavibhag/samajik-sansthan 308
+/karyavibhag/ngo-coordination/ /karyavibhag/samajik-sansthan 308
+/2024/02/23/educational-institutes-karyavibhag /karyavibhag/educational-institutes 308
+/2024/02/23/educational-institutes-karyavibhag/ /karyavibhag/educational-institutes 308
+
+# Events
+/events-eco /events 308
+/events-eco/ /events 308
+/world-earth-day-poster /events/world-earth-day-poster 308
+/world-earth-day-poster/ /events/world-earth-day-poster 308
+/prakruti-vandana /events/prakruti-vandana 308
+/prakruti-vandana/ /events/prakruti-vandana 308
+/prakurti-vandana /events/prakruti-vandana 308
+/prakurti-vandana/ /events/prakruti-vandana 308
+/media-samvad-conclave /events/media-samvad-conclave 308
+/media-samvad-conclave/ /events/media-samvad-conclave 308
+/vice-chancellors-conclave /events/vice-chancellors-conclave 308
+/vice-chancellors-conclave/ /events/vice-chancellors-conclave 308
+/paryavaran-prahari-event /events/paryavaran-prahari 308
+/paryavaran-prahari-event/ /events/paryavaran-prahari 308
+/paryavaran-pratiyogita /events/paryavaran-pratiyogita 308
+/paryavaran-pratiyogita/ /events/paryavaran-pratiyogita 308
+/jal-samwad /events/jal-samwad 308
+/jal-samwad/ /events/jal-samwad 308
+/online-conclave /events/online-conclave 308
+/online-conclave/ /events/online-conclave 308
+/eco-bricks /events/eco-bricks 308
+/eco-bricks/ /events/eco-bricks 308
+/plastic-mukt-bharat /events/plastic-mukt-bharat 308
+/plastic-mukt-bharat/ /events/plastic-mukt-bharat 308
+/haridwar-kumbh /events/haridwar-kumbh 308
+/haridwar-kumbh/ /events/haridwar-kumbh 308
+
+# Stories / news / feeds / gallery → unified /stories
+/feeds /stories 308
+/feeds/ /stories 308
+/success-stories /stories 308
+/success-stories/ /stories 308
+/latest-news /stories 308
+/latest-news/ /stories 308
+/gallery /stories 308
+/gallery/ /stories 308
+/2024/02/22/news2 /stories 308
+/2024/02/22/news2/ /stories 308
+/2024/02/22/latest /stories 308
+/2024/02/22/latest/ /stories 308
+
+# Join → EcoMitram (external)
+/join https://ecomitram.org/ 308
+/join/ https://ecomitram.org/ 308
+
+# Design page — moved under /about
+/colophon /about/design 308
+/colophon/ /about/design 308

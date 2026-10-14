@@ -25,7 +25,7 @@ export const resources: NavItem[] = [
 export const orgContact = {
   phone: "+91 8369-837-609",
   phoneTel: "+918369837609",
-  email: "[email protected]",
+  email: "paryavarangatividhi@gmail.com",
   whatsapp:
     "https://api.whatsapp.com/send?phone=+918369837609&text=I'm%20interested%20in%20Paryavaran%20Sanrakshan",
   facebook: "https://www.facebook.com/psg.paryavaran.sanrakshan/",
